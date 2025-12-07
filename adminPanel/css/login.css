@@ -1,0 +1,196 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root{
+    --mainColor: #0061FF;
+    --secondaryColor: #36C3F5;
+    --whiteColor:#ffff;
+    --blackColor: #000000;
+    --darkGreyColor: #757575;
+    --lightGreyColor: #BDBDBD;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100vh;
+
+    & .well{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    & .signIn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 32%;
+        padding: 2rem;
+
+        & .put{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 4rem;
+
+            & label{
+                position: absolute;
+                top: -.5rem;
+                left: 1rem;
+                width: max-content;
+                background-color: var(--whiteColor);
+                padding: 0 .5rem;
+            }
+
+            & input{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: var(--whiteColor);
+                border: 1px solid var(--darkGreyColor);
+                border-radius: .5rem;
+                color: var(--mainColor);
+                font-size: large;
+                font-weight: 570;
+                outline: none;
+                padding-left: 2rem;
+            }
+
+            & figure{
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 72%;
+                aspect-ratio: 4/4;
+                background-color: var(--secondaryColor);
+                border-radius: 2rem;
+                transform: translateY(-50%);
+
+                & img{
+                    width: 90%;
+                    height: 90%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        & .remind{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            & .check{
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+            }
+
+            & .forget{
+                color: var(--secondaryColor);
+                text-decoration: none;
+                transition: all .5s ease;
+
+                &:hover{
+                    color: var(--mainColor);
+                    font-weight: bold;
+                }
+            }
+        }
+
+        & .ctaZone{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+
+            & .upCta{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                & hr{
+                    width: 100%;
+                    height: .1rem;
+                    background-color: var(--blackColor);
+                    border: none;
+                    z-index: 0;
+                }
+
+                & p{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: max-content;
+                    background-color: var(--whiteColor);
+                    padding: 0 .5rem;
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
+                }
+            }
+        }
+
+        & .oderConnect{
+            display: flex;
+            align-items: center;
+            gap: 8rem;
+            list-style: none;
+
+            & li{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 4rem;
+                aspect-ratio: 4/4;
+                background-color: var(--secondaryColor);
+                border-radius: 50%;
+                transition: all .5s ease;
+
+                & img{
+                    width: 72%;
+                    aspect-ratio: 4/4;
+                }
+
+                &:hover{
+                    background-color: var(--mainColor);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        & .go{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: var(--mainColor);
+            border: none;
+            border-radius: 4rem;
+            color: var(--whiteColor);
+            cursor: pointer;
+            font-size: larger;
+            font-weight: bold;
+            padding: 1rem 0;
+        }
+    }
+}
