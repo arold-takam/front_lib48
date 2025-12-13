@@ -252,223 +252,192 @@ body {
             }
         }
 
-        & .stat{
-            display: flex;
-            align-items: center;
-            width: 100%;
-
-            & .records{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 1rem;
-                width: 100%;
-                list-style: none;
-
-                & li{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 2rem;
-                    width: 100%;
-                    background-color: var(--secondaryColor);
-                    border-radius: 1rem;
-                    color: var(--whiteColor);
-                    font-size: x-large;
-                    padding: 1rem;
-
-                    & b{
-                        font-size: xx-large;
-                    }
-                }
-            }
-        }
-
-        & .ctaZone{
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            width: 100%;
-
-            & a{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 2rem;
-                font-size: large;
-                font-weight: bold;
-                text-decoration: none;
-                padding: 1rem 2rem;
-            }
-            & .update{
-                background-color: var(--mainColor);
-                color: var(--whiteColor);
-            }
-            & .del{
-                background-color: var(--whiteColor);
-                border: 2px solid var(--mainColor);
-            }
-        }
-
-        & .panelActivity{
+        & .fieldForm{
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            justify-content: center;
             width: 100%;
+            height: calc(100% - 6rem);
 
-            & .titleActivity{
+            & .addBook{
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
-                width: 100%;
+                gap: 2rem;
+                width: 40rem;
+                padding: 2rem;
 
-                & .left{
+                & .categorySelect{
                     display: flex;
                     align-items: center;
-                    gap: .5rem;
-                    color: var(--mainColor);
+                    justify-content: space-between;
+                    width: 100%;
 
-                    & .listIcon{
+                    & label{
+                        font-size: large;
+                    }
+
+                    & select{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        width: 4rem;
+                        width: 60%;
+                        border: 1px solid var(--mainColor);
+                        border-radius: .5rem;
+                        outline: none;
+                        padding: .5rem;
+                    }
+                }
+
+                & .put{
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    height: 4rem;
+
+                    & label{
+                        position: absolute;
+                        top: -.5rem;
+                        left: 1rem;
+                        width: max-content;
+                        background-color: var(--whiteColor);
+                        padding: 0 .5rem;
+                    }
+
+                    & input{
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        background-color: var(--whiteColor);
+                        border: 1px solid var(--darkGreyColor);
+                        border-radius: .5rem;
+                        color: var(--mainColor);
+                        font-size: large;
+                        font-weight: 570;
+                        outline: none;
+                        padding-left: 2rem;
+                    }
+
+                    & figure{
+                        position: absolute;
+                        top: 50%;
+                        right: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 72%;
                         aspect-ratio: 4/4;
-                        background-color: var(--mainColor);
-                        border-radius: 50%;
+                        background-color: var(--secondaryColor);
+                        border-radius: 2rem;
+                        transform: translateY(-50%);
 
                         & img{
                             width: 90%;
-                            aspect-ratio: 4/4;
+                            height: 90%;
                             object-fit: cover;
                         }
                     }
                 }
 
-                & .searchZone{
+                & .coverField{
                     position: relative;
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    width: 28rem;
-                    height: 3rem;
-                    background-color: var(--whiteColor);
-                    border: 2px solid var(--mainColor);
-                    border-radius: 2rem;
-                    overflow: hidden;
+                    width: 100%;
+                    height: 4rem;
+
+                    & label{
+                        position: absolute;
+                        top: -.5rem;
+                        right: 1rem;
+                        width: max-content;
+                        background-color: var(--whiteColor);
+                        padding: 0 .5rem;
+                    }
 
                     & input{
-                        width: 80%;
-                        height: 100%;
-                        border: none;
-                        background-color: var(--whiteColor);
-                        font-size: large;
-                        outline: none;
-                        z-index: 3;
-                        padding: 0 1rem;
-                    }
-
-                    & .go{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        width: 20%;
+                        width: 100%;
                         height: 100%;
+                        background-color: var(--whiteColor);
+                        border: 1px solid var(--darkGreyColor);
+                        border-radius: .5rem;
+                        color: var(--mainColor);
+                        font-size: large;
+                        font-weight: 570;
+                        outline: none;
+                        padding-left: 2rem;
+                    }
+
+                    & figure{
+                        position: absolute;
+                        top: 50%;
+                        right: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 72%;
+                        aspect-ratio: 4/4;
+                        background-color: var(--secondaryColor);
+                        border-radius: 2rem;
+                        transform: translateY(-50%);
+
+                        & img{
+                            width: 90%;
+                            height: 90%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                & .ctaZone{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4rem;
+                    width: 100%;
+
+                    & a, button{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 16rem;
+                        border-radius: 2rem;
+                        font-size: large;
+                        padding: 1rem 0;
+                        text-decoration: none;
+                    }
+                    & .go{
                         background-color: var(--mainColor);
                         border: none;
-                        cursor: pointer;
+                        color: var(--whiteColor);
+                        transition: all .5s ease;
 
-                        & img{
-                            height: 60%;
-                            aspect-ratio: 16/9;
+                        &:hover{
+                            border: 1px solid var(--secondaryColor);
+                            font-weight: bold;
+                            cursor: pointer;
                         }
                     }
-                }
-            }
+                    & .back{
+                        background-color: var(--whiteColor);
+                        border: 2px solid var(--secondaryColor);
+                        color: var(--secondaryColor);
+                        transition: all .3s ease;
 
-            & .panel{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                width: 100%;
-
-                & .panelUp{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    width: 100%;
-                    list-style: none;
-
-                    & li{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 1rem;
-                        width: calc(100% / 4);
-                        color: var(--mainColor);
-                        font-size: larger;
-                        font-weight: bold;
-                        border-bottom: 2px solid var(--mainColor);
-                        padding: .5rem;
-
-                        & img{
-                            width: 1.5rem;
-                            aspect-ratio: 16/9;
-                        }
-                    }
-                }
-
-                & .panelDown{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    justify-content: flex-start;
-                    gap: 1rem;
-                    width: 100%;
-                    height: 22rem;
-                    list-style: none;
-                    overflow: hidden scroll;
-                    scroll-behavior: smooth;
-                    padding: .5rem;
-
-                    & .bookLine{
-                        display: flex;
-                        align-items: flex-start;
-                        width: 100%;
-
-                        & .infoLine{
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: 1rem;
-                            width: 100%;
-                            height: 3rem;
-                            list-style: none;
-
-                            & li{
-                                display: flex;
-                                align-items: center;
-                                width: calc(100% / 4);
-                                height: 100%;
-                                background-color: white;
-                                box-shadow: 0 0 2px rgba(0,80,255,0.48);
-                                border-radius: .5rem;
-                                padding: .5rem;
-
-                                & a{
-                                    color: var(--mainColor);
-                                    font-size: large;
-                                    font-weight: bold;
-                                    text-decoration: none;
-                                }
-
-                                &:nth-child(2){
-                                    font-weight: bold;
-                                }
-                            }
+                        &:hover{
+                            border-color: var(--mainColor);
+                            color: var(--mainColor);
+                            font-weight: bold;
                         }
                     }
                 }
