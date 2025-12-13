@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" href="../ressources/images/logo.png">
-	<title>Lib48/Manage Accounts</title>
-	<link rel="stylesheet" href="../css/aDashAccount.css">
+	<title>Lib48/Welcome Admin</title>
+	<link rel="stylesheet" href="../css/aDashHome.css">
 </head>
 <body>
 	<aside>
@@ -14,7 +14,7 @@
 			<div class="info">
 				<h1>Toto Le Cloon</h1>
 				<p>toto@gmail.com</p>
-				<a href="./aDashHome.html" class="goProfile">VOIR PLUS</a>
+				<a href="aDashHome.html" class="goProfile">VOIR PLUS</a>
 			</div>
 		</section>
 		<div class="separator">
@@ -24,32 +24,32 @@
 		<section class="menu">
 			<h2>Ici, vous pouvez...</h2>
 			<ul class="navLink">
-				<li class="active">
+				<li>
 					<a href="aDashAccount.html">
 						<b>&rightarrow;</b>
 						<p>Gérer les comptes</p>
 					</a>
 				</li>
 				<li>
-					<a href="../html/aDashBook.html">
+					<a href="aDashBook.html">
 						<b>&rightarrow;</b>
 						<p>Gérer les livre</p>
 					</a>
 				</li>
 				<li>
-					<a href="./aDashCategory.html">
+					<a href="aDashCategory.html">
 						<b>&rightarrow;</b>
 						<p>Gérer les categories</p>
 					</a>
 				</li>
 				<li>
-					<a href="./aDashBorrow.html">
+					<a href="aDashBorrow.html">
 						<b>&rightarrow;</b>
 						<p>Gérer les emprunts</p>
 					</a>
 				</li>
 				<li>
-					<a href="./aDashReturn.html">
+					<a href="aDashReturn.html">
 						<b>&rightarrow;</b>
 						<p>Gérer les retours</p>
 					</a>
@@ -63,33 +63,38 @@
 	<main>
 		<header>
 			<a href="aDashHome.html" class="logoLink"><img src="../ressources/images/logo.png" alt="admin logo"></a>
-			<div class="titleFrame"><h1>Gestion des comptes</h1></div>
+			<div class="titleFrame"><h1>Informations du profil</h1></div>
 		</header>
-		<section class="stat">
-			<ul class="records">
+		<div class="infoProfile">
+			<ul class="listInfo">
 				<li>
-					<b>+1500</b>
-					<p>Abonnements</p>
+					<p>Votre nom d'utilisateur:</p>
+					<b>Toto le cloon</b>
 				</li>
 				<li>
-					<b>+200</b>
-					<p>Recharges</p>
+					<p>Votre adresse email:</p>
+					<b>toto@gmail.com</b>
 				</li>
 				<li>
-					<b>+45</b>
-					<p>Operations réussies</p>
-				</li>
-				<li>
-					<b>8</b>
-					<p>Operations échouées</p>
+					<p>Votre mot de passe:</p>
+					<div class="right">
+						<b>********</b>
+						<figure class="eye">
+							<img src="../ressources/images/eyeOpen.png" alt="eye icon" class="see">
+						</figure>
+					</div>
 				</li>
 			</ul>
-		</section>
+			<div class="ctaProfile">
+				<a href="aDashUpdateAccount.html" class="updateCta">MODIFIER</a>
+				<a href="#" class="logoutCta">SE DÉCONNECTER</a>
+			</div>
+		</div>
 		<section class="panelActivity">
 			<div class="titleActivity">
 				<div class="left">
 					<figure class="clock"><img src="../ressources/images/story.png" alt="story icon" class="story"></figure>
-					<h2>Historique des activités</h2>
+					<h2>Historique globale des activités</h2>
 				</div>
 				<form class="searchZone">
 					<input type="search" class="searchUser" id="searchUser" placeholder="Retrouver un utilisateur ici">
@@ -118,7 +123,7 @@
 				<ul class="panelDown">
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="../html/aDashUser.html">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -126,7 +131,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -134,7 +139,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -142,7 +147,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -150,7 +155,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -158,7 +163,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -166,7 +171,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -174,7 +179,7 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>
@@ -182,7 +187,23 @@
 					</li>
 					<li class="userLine">
 						<ul class="infoLine">
-							<li><a href="#">Toto le...</a></li>
+							<li><a href="aDashUser.html">Toto le...</a></li>
+							<li>CONNEXION</li>
+							<li>SUCCESS</li>
+							<li>30/02/2090 - 25h70</li>
+						</ul>
+					</li>
+					<li class="userLine">
+						<ul class="infoLine">
+							<li><a href="aDashUser.html">Toto le...</a></li>
+							<li>CONNEXION</li>
+							<li>SUCCESS</li>
+							<li>30/02/2090 - 25h70</li>
+						</ul>
+					</li>
+					<li class="userLine">
+						<ul class="infoLine">
+							<li><a href="aDashUser.html">Toto le...</a></li>
 							<li>CONNEXION</li>
 							<li>SUCCESS</li>
 							<li>30/02/2090 - 25h70</li>

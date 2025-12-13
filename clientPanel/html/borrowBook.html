@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lib 48/Titre Du Livre</title>
-    <link rel="stylesheet" href="../css/bookDetails.css">
+    <title>Lib 48/Emprunter Un Livre</title>
+    <link rel="stylesheet" href="../css/borrowBook.css">
 </head>
 <body>
     <section class="menu">
@@ -65,31 +65,24 @@
             <button type="submit" class="menuBtn"><img src="../ressources/images/menuOpen.png" alt="menuOpen"></button>
         </div>
     </header>
-    <div class="available">
-        <div class="circle"></div>
-        <p>Ce livre est disponible</p>
-    </div>
-    <section class="cover">
-        <img src="../ressources/images/fondMenu.jpg" alt="coverBook" class="coverBook">
-        <div class="info">
-            <h1>Shine</h1>
-            <p>Brian Tracy</p>
+    <h1>Emprunt en cours</h1>
+    <form class="validateBorrow">
+        <div class="coverBook">
+            <h2>Shine</h2>
+            <img src="../ressources/images/fondMenu.jpg" alt="cover" class="cover">
         </div>
-    </section>
-    <section class="details">
-        <h2>A propos du livre</h2>
-        <ul>
-            <li>
-                <b>Editeur:</b>
-                <p>lololi</p>
-            </li>
-            <li>
-                <b>Etat du livre:</b>
-                <p>En bon état</p>
-            </li>
-        </ul>
-    </section>
-    <a href="../html/borrowBook.html" type="button" class="cta">EMPRUNTER</a>
+        <div class="put">
+            <label for="delay">Entrer la durée de votre emprunt(En jours):</label>
+            <input type="number" name="delay" id="delay" class="delay" min="0" required>
+        </div>
+        <button type="submit" class="send">VALIDER</button>
+    </form>
+    <div class="warning">
+        <h3>Bon a à savoir !</h3>
+        <p>
+            Ce livre vous sera emprunté en <i>BON ÉTAT.</i>En cas de deterioration ou de retard sur le retour de ce livre, des sanctions vous serront applique.
+        </p>
+    </div>
     <section class="sameCate">
         <div class="title">
             <h1>Vous allez aimer</h1>
@@ -101,7 +94,7 @@
         <div class="screen">
             <ul>
                 <li>
-                    <a href="../html/bookDetails.html" class="bookDetailsPage">
+                    <a href="ails.html" class="bookDetailsPage">
                         <div class="cover">
                             <div class="category"><p>ACTION</p></div>
                         </div>
