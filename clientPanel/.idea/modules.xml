@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/adminPanel.iml" filepath="$PROJECT_DIR$/.idea/adminPanel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/clientPanel.iml" filepath="$PROJECT_DIR$/.idea/clientPanel.iml" />
     </modules>
   </component>
 </project>

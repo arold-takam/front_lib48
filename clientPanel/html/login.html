@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lib48/Signup and discover</title>
+	<link rel="icon" type="image/png" href="../ressources/images/logo.png" />
+	<link rel="stylesheet" href="../css/generalStyle.css">
+	<link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+	<section class="top">
+		<header>
+			<a class="left" href="../index.html">
+				<img src="../ressources/images/logo.png" alt="logo image" class="logo">
+			</a>
+			<div class="right">
+				<form class="search">
+					<input id="findAll" name="findAll" type="search" placeholder="Rechercher...">
+					<button type="submit" class="find"><img src="../ressources/images/search.png" alt="Find something">
+					</button>
+				</form>
+				<button type="button" class="openMenu"><img src="../ressources/images/menuOpen.png" alt="Menu open button">
+				</button>
+			</div>
+		</header>
+		<section class="hero">
+			<div class="heroText">
+				<h1>Accedez facilement a votre compte</h1>
+				<img src="../ressources/images/account_circle.png" alt="account_circle" class="account_circle">
+				<p>Entrez votre noms, mot de passe. Si vous l'avez oublier, cliquez sur "Mot de passe oublie".</p>
+			</div>
+		</section>
+	</section>
+	<main>
+		<form class="inscription">
+			<div class="put">
+				<label for="mail">Entrez adresse mail</label>
+				<input type="email" class="mail" id="mail" required placeholder="(EX: toto@gmail.com)">
+			</div>
+			<div class="put">
+				<label for="pass">Entrez mot de passe</label>
+				<input type="password" class="pass" id="pass" required placeholder="*******">
+				<figure class="see"><img src="../ressources/images/eyeOpen.png" alt="Eye open"></figure>
+			</div>
+			<div class="remind">
+				<input type="checkbox" name="mind" id="mind">
+				<label for="mind">Se souvenir de moi</label>
+			</div>
+			<button type="submit" class="ok">SE CONNECTER</button>
+		</form>
+		<div class="lastCta">
+			<p>Vous etes nouveau?</p>
+			<a href="./signUp.html" class="signUn">INSCRIVEZ-VOUS</a>
+		</div>
+	</main>
+</body>
+</html>
