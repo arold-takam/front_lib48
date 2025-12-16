@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>lib 48/book page</title>
     <link rel="icon" type="image/png" href="../ressources/images/logo.png" />
+    <link rel="stylesheet" href="../css/generalStyle.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
     <section class="menu">
         <div class="top">
             <div class="menuHead">
-                <a href="../index.html" class="logo"><img src="../ressources/images/logo.png" alt="logo"></a>
+                <a href="home.html" class="logo"><img src="../ressources/images/logo.png" alt="logo"></a>
                 <button class="close"><img src="../ressources/images/menuClose.png" alt="menuClosed"></button>
             </div>
             <a href="#" class="profile">
@@ -22,7 +23,7 @@
             </a>
         </div>
         <nav>
-            <a href="../index.html" class="home">
+            <a href="home.html" class="home">
                 <img src="../ressources/images/home.png" alt="home">
                 <p>Accueil</p>
                 <figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
@@ -57,196 +58,189 @@
         </footer>
     </section>
     <header>
-        <a href="../index.html" class="logoImg"><img src="../ressources/images/logo.png" alt="logo"></a>
+        <a class="left" href="home.html">
+            <img src="../ressources/images/logo.png" alt="logo image" class="logo">
+        </a>
         <div class="right">
-            <form class="findBook">
-                <input type="search" placeholder="Find your book here">
-                <button type="submit" class="ok"><img src="../ressources/images/search.png" alt="search"></button>
+            <form class="search">
+                <input id="findAll" name="findAll" type="search" placeholder="Rechercher...">
+                <button type="submit" class="find"><img src="../ressources/images/search.png" alt="Find something"></button>
             </form>
-            <button type="submit" class="menuBtn"><img src="../ressources/images/menuOpen.png" alt="menuOpen"></button>
+            <button type="button" class="openMenu"><img src="../ressources/images/menuOpen.png" alt="Menu open button"></button>
         </div>
     </header>
-    <section class="new">
-        <div class="title">
-            <h1>Les nouvelles sorties</h1>
-            <div class="more">
-                <p>Plus</p>
-                <img src="../ressources/images/arrow_right.png" alt="arrow" class="arrow">
+    <main>
+        <section class="new">
+            <div class="title">
+                <h1>Les nouvelles sorties</h1>
+                <div class="more">
+                    <p>Plus</p>
+                    <img src="../ressources/images/arrow_right.png" alt="arrow" class="arrow">
+                </div>
             </div>
-        </div>
-        <div class="screen">
-            <ul>
-                <li>
-                    <a href="ails.html" class="bookDetailsPage">
-                        <div class="cover">
-                            <div class="category"><p>ACTION</p></div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category"><p>ACTION</p></div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category"><p>ACTION</p></div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category"><p>ACTION</p></div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category"><p>ACTION</p></div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="btnSlider">
-            <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
-            <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
-        </div>
-    </section>
-    <section class="categories">
-        <div class="title">
-            <h1>Explorer Par Genre</h1>
-            <div class="more">
-                <p>Plus</p>
-                <img src="../ressources/images/arrow_right.png" alt="arrow" class="arrow">
+            <div class="screen">
+                <ul>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="screen">
-            <ul>
-                <li>
-                    <a href="#">
-                        <h4>Thriller</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h4>Thriller</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h4>Thriller</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <h4>Thriller</h4>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="btnSlider">
-            <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
-            <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
-        </div>
-    </section>
-    <section class="hot">
-        <div class="title">
-            <h1>Découvrez Nos Tendances</h1>
-            <div class="more">
-                <p>Plus</p>
-                <img src="/clientPanel/ressourcesl/ressources/images/arrow_right.png" alt="arrow" class="arrow">
+            <div class="btnSlider">
+                <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
+                <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
             </div>
-        </div>
-        <div class="screen">
-            <ul>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category">ACTION</div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category">ACTION</div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category">ACTION</div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category">ACTION</div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="cover">
-                            <div class="category">ACTION</div>
-                        </div>
-                        <div class="bookInfo">
-                            <h2>Titre du livre</h2>
-                            <h3>Noms de l'auteur</h3>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="btnSlider">
-            <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
-            <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
-        </div>
-    </section>
+        </section>
+        <section class="categories">
+            <div class="title">
+                <h1>Explorer Par Genre</h1>
+                <div class="more">
+                    <p>Plus</p>
+                    <img src="../ressources/images/arrow_right.png" alt="arrow" class="arrow">
+                </div>
+            </div>
+            <div class="screen">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <h4>Thriller</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h4>Thriller</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h4>Thriller</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h4>Thriller</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btnSlider">
+                <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
+                <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
+            </div>
+        </section>
+        <section class="hot">
+            <div class="title">
+                <h1>Découvrez Nos Tendances</h1>
+                <div class="more">
+                    <p>Plus</p>
+                    <img src="../ressources/images/arrow_right.png" alt="arrow" class="arrow">
+                </div>
+            </div>
+            <div class="screen">
+                <ul>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./bookDetails.html" class="bookDetailsPage">
+                            <div class="cover">
+                                <div class="category"><p>ACTION</p></div>
+                            </div>
+                            <div class="bookInfo">
+                                <h2>Titre du livre</h2>
+                                <h3>Noms de l'auteur</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btnSlider">
+                <button type="button" class="left"><img src="../ressources/images/arrow_right.png" alt="arrow left"></button>
+                <button type="button" class="right"><img src="../ressources/images/arrow_right.png" alt="arrow right"></button>
+            </div>
+        </section>
+    </main>
 
     <script src="../js/playMenu.js" defer></script>
 </body>
