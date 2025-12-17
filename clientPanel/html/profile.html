@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lib 48/Votre profil</title>
+	<link rel="icon" type="image/png" href="../ressources/images/logo.png" />
+	<link rel="stylesheet" href="../css/generalStyle.css">
+	<link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+	<section class="menu">
+		<div class="top">
+			<div class="menuHead">
+				<a href="home.html" class="logo"><img src="../ressources/images/logo.png" alt="logo"></a>
+				<button class="close"><img src="../ressources/images/menuClose.png" alt="menuClosed"></button>
+			</div>
+			<a href="./profile.html" class="profile">
+				<div class="initial"><p>NE</p></div>
+				<div class="info">
+					<p>Noe Ernest</p>
+					<b>noeErnest2025@gmail.com</b>
+				</div>
+			</a>
+		</div>
+		<nav>
+			<a href="home.html" class="home">
+				<img src="../ressources/images/home.png" alt="home">
+				<p>Accueil</p>
+				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
+			</a>
+			<a href="#" class="notify">
+				<img src="../ressources/images/notifications.png" alt="notifications">
+				<p>Notifications</p>
+				<b>+25 NEWS</b>
+				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
+			</a>
+			<a href="#" class="borrows">
+				<img src="../ressources/images/loan.png" alt="loan">
+				<p>Vos emprunts</p>
+				<b>+5 Emprunts</b>
+				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
+			</a>
+			<a href="#" class="settings">
+				<img src="../ressources/images/settings.png" alt="settings">
+				<p>Paramètres</p>
+				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
+			</a>
+		</nav>
+		<div class="theme">
+			<p>theme <b>(Mode claire):</b></p>
+			<div class="switch">
+				<img src="../ressources/images/light.png" alt="light mode" class="light ">
+				<img src="../ressources/images/dark.png" alt="dark mode" class="dark active">
+			</div>
+		</div>
+		<footer>
+			<p>&copy; Copyright 2025, Lib 48; All right reserved.</p>
+		</footer>
+	</section>
+	<header>
+		<a class="left" href="home.html">
+			<img src="../ressources/images/logo.png" alt="logo image" class="logo">
+		</a>
+		<div class="right">
+			<form class="search">
+				<input id="findAll" name="findAll" type="search" placeholder="Rechercher...">
+				<button type="submit" class="find"><img src="../ressources/images/search.png" alt="Find something"></button>
+			</form>
+			<button type="button" class="openMenu"><img src="../ressources/images/menuOpen.png" alt="Menu open button"></button>
+		</div>
+	</header>
+	<main>
+		<section class="card">
+			<div class="cardItem">
+				<div class="top">
+					<span class="type">Type de Carte</span>
+					<div class="number">
+						<b>Num:</b>
+						<p>150</p>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="day">7 jours</div>
+					<p>De validité restante</p>
+				</div>
+				<div class="bottom">
+					<a href="#" class="load">SOUSCRIRE</a>
+					<a href="#" class="del">SUPPRIMER</a>
+				</div>
+			</div>
+		</section>
+		<section class="infoProfile">
+			<div class="title">
+				<h1>Vos informations</h1>
+				<button type="button" class="updateProBtn">
+					<b>MODIFIER</b>
+					<img src="../ressources/images/Crayon.png" alt="Update icon">
+				</button>
+			</div>
+			<div class="initial">NE</div>
+			<ul class="infoline">
+				<li>
+					<b>Nom:</b>
+					<p>Noe Ernest</p>
+				</li>
+				<li>
+					<b>Email:</b>
+					<p>noeErnest2025@gmail.com</p>
+				</li>
+				<li class="pass">
+					<b>Mot de pass:</b>
+					<p>********</p>
+					<button type="button" class="see"><img src="../ressources/images/eyeOpen.png" alt="See icon"></button>
+				</li>
+				<li>
+					<b>Role:</b>
+					<p>ABONNE</p>
+				</li>
+			</ul>
+		</section>
+		<section class="story">
+			<div class="title">
+				<h1>Historique</h1>
+				<form class="filter">
+					<label for="type">Filtrer par:</label>
+					<select name="type" id="type">
+						<option value="TOUT">TOUT</option>
+						<option value="SUCCESS">SUCCESS</option>
+						<option value="FAILED">FAILED</option>
+					</select>
+				</form>
+			</div>
+			<ul class="stories">
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="top">
+						<h2>Type cooperation</h2>
+						<b>ÉTAT</b>
+					</div>
+					<div class="middle">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi autem dolore dolorem error est hic id, illo iste maxime natus nesciunt qui quod reiciendis totam velit vitae voluptates!</p>
+						<span>Pour: <b>Titre du livre</b></span>
+					</div>
+					<div class="bottom">
+						<div class="date">
+							<b>Le:</b>
+							<p>30/02/2050</p>
+						</div>
+						<div class="time">
+							<b>A:</b>
+							<p>25h70</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+	</main>
+	
+	<script src="../js/playMenu.js"></script>
+</body>
+</html>
