@@ -73,10 +73,6 @@
 		<section class="hero">
 			<div class="top">
 				<h1>Titre de la catégorie</h1>
-				<a href="#" class="updateBtn">
-					<p>MODIFIER</p>
-					<img src="../ressources/images/Crayon.png" alt="Update image">
-				</a>
 			</div>
 			<div class="details">
 				<p>
@@ -85,7 +81,15 @@
 			</div>
 		</section>
 		<section class="listBook">
-			<ul>
+			<form class="filterZone">
+				<label for="filter">Filtrer par:</label>
+				<select name="filter" id="filter">
+					<option value="all">TOUT</option>
+					<option value="catalogue_1">Catalogue 1</option>
+				</select>
+				<button type="submit" class="ok">FILTRER</button>
+			</form>
+			<ul class="books">
 				<li>
 					<a href="./bookDetails.html" class="bookDetailsPage">
 						<div class="cover">

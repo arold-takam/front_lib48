@@ -220,7 +220,7 @@ body {
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        height: 5rem;
+        height: 8rem;
         background: var(--whiteColor);
         padding: 0 1rem;
         z-index: 90;
@@ -251,8 +251,8 @@ body {
                 justify-content: space-between;
                 width: 32rem;
                 height: 80%;
-                border: 2px solid var(--mainColor);
-                border-radius: 2rem;
+                border: 4px solid var(--mainColor);
+                border-radius: 8rem;
                 overflow: hidden;
 
                 & input{
@@ -261,7 +261,7 @@ body {
                     border: none;
                     background-color: transparent;
                     color: var(--mainColor);
-
+                    font-weight: bolder;
                     outline: none;
                     padding: 0 1rem;
                 }
@@ -303,7 +303,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 4rem;
         width: 100%;
 
         & .hero{
@@ -316,33 +316,13 @@ body {
             & .top{
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
                 width: 100%;
                 padding: 0 1rem;
 
                 & h1{
                     color: var(--mainColor);
                     font-size: 4rem;
-                }
-
-                & .updateBtn{
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    background-color: var(--mainColor);
-                    border-radius: 4rem;
-                    padding: 2rem;
-                    text-decoration: none;
-
-                    & p{
-                        color: var(--whiteColor);
-                        font-weight: bolder;
-                    }
-
-                    & img{
-                        width: 3.5rem;
-                        aspect-ratio: 4/4;
-                    }
                 }
             }
 
@@ -361,12 +341,58 @@ body {
         }
 
         & .listBook{
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 1rem;
             width: 100%;
 
-            & ul{
+            & .filterZone{
+                position: sticky;
+                top: 8rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                background-color: var(--whiteColor);
+                border-bottom: 4px solid var(--mainColor);
+                padding: 2rem;
+
+                & label{
+                    color: var(--mainColor);
+                    font-size: 3rem;
+                    font-weight: bold;
+                }
+
+                & select{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40%;
+                    height: 5rem;
+                    background-color: var(--whiteColor);
+                    border: 2px solid var(--mainColor);
+                    border-radius: .5rem;
+                    font-size: xxx-large;
+                    padding: 0.5rem;
+                }
+
+                & .ok{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 5rem;
+                    background-color: var(--mainColor);
+                    border: none;
+                    border-radius: 8rem;
+                    color: var(--whiteColor);
+                    font-size: xxx-large;
+                    padding: 0 3rem;
+                }
+            }
+
+            & .books{
                 display: flex;
                 flex-direction: column;
                 align-items: center;

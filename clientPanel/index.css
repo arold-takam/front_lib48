@@ -26,7 +26,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        height: 48rem;
+        height: 60rem;
         gap: 2rem;
         background: url("./ressources/images/fondMenu.jpg") center no-repeat, linear-gradient(0deg, rgba(0,0,0,0.9), rgba(0,0,0,0.9));
         background-size: cover;
@@ -39,7 +39,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 5rem;
+            height: 8rem;
             background: var(--whiteColor);
             padding: 0 1rem;
             z-index: 100;
@@ -71,7 +71,7 @@
                     width: 32rem;
                     height: 80%;
                     border: 2px solid var(--mainColor);
-                    border-radius: 2rem;
+                    border-radius: 8rem;
                     overflow: hidden;
 
                     & input{
@@ -118,7 +118,7 @@
 
         & .hero{
             position: relative;
-            top: 3rem;
+            top: 9rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -160,11 +160,10 @@
                     align-items: center;
                     justify-content: center;
                     width: 24rem;
-                    height: 5rem;
+                    height: 8rem;
                     background-color: red;
                     border-radius: 4rem;
                     color: var(--whiteColor);
-
                     font-weight: bold;
                     text-decoration: none;
                 }
@@ -181,6 +180,7 @@
 
     & main{
         position: relative;
+        top: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -577,7 +577,7 @@
                     align-items: center;
                     justify-content: center;
                     width: 40rem;
-                    height: 7rem;
+                    height: 8rem;
                     background-color: red;
                     border-radius: 4rem;
                     color: var(--whiteColor);
