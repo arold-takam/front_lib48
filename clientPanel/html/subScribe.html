@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Lib48/Modifier votre compte</title>
-	<link rel="icon" type="image/png" href="../ressources/images/logo.png" />
+	<title>Lib 48/Abonnez vous</title>
 	<link rel="stylesheet" href="../css/generalStyle.css">
-	<link rel="stylesheet" href="../css/updateAccount.css">
+	<link rel="stylesheet" href="../css/subScribe.css">
 </head>
 <body>
 	<section class="menu">
@@ -70,30 +69,72 @@
 		</div>
 	</header>
 	<main>
-		<section class="hero">
-			<div class="heroText">
-				<h1>Modifier votre compte</h1>
-				<img src="../ressources/images/account_circle.png" alt="account_circle" class="account_circle">
-				<p>Entrez votre noms, mot de passe. Si vous l'avez oublier, cliquez sur "Mot de passe oublie".</p>
+		<section class="top">
+			<div class="hero">
+				<p>Obtenir</p>
+				<h1>Ma carte</h1>
 			</div>
 		</section>
-		<form class="inscription">
+		<section class="info">
+			<h2>Choisir votre carte</h2>
+			<p>Chez Lib48 vous avez une panoplie de carte d'abonnement a votre disposition, il suffit d'en choisir une et jouir des ses pass dans nos agences.</p>
+			<b>*Vous pouvez changer de carte ou vous reabonner a tout moment et suivant le respect de notre politique.</b>
+		</section>
+		<form class="chooseCard">
 			<div class="put">
-				<label for="name">Entrez votre nom</label>
-				<input type="text" class="name" id="name" placeholder="(EX: Toto le cloon)">
+				<div class="standardCard">
+					<input type="radio" name="typeCard" id="standard">
+					<label for="standard">
+						<div class="topCard">
+							<p>Carte</p>
+							<b>Standard</b>
+						</div>
+						<span class="middle">
+						<span class="msg">
+							<h3>15 jours</h3>
+							<p>De validité</p>
+						</span>
+					</span>
+						<span class="bottom">CHOISIR</span>
+					</label>
+				</div>
+				<div class="customCard">
+					<input type="radio" name="typeCard" id="custum">
+					<label for="custum">
+						<div class="topCard">
+							<p>Carte</p>
+							<b>Custum</b>
+						</div>
+						<span class="middle">
+						<span class="msg">
+							<h3>30 jours</h3>
+							<p>De validité</p>
+						</span>
+					</span>
+						<span class="bottom">CHOISIR</span>
+					</label>
+				</div>
+				<div class="vipCard">
+					<input type="radio" name="typeCard" id="vip">
+					<label for="vip">
+						<div class="topCard">
+							<p>Carte</p>
+							<b>VIP</b>
+						</div>
+						<span class="middle">
+						<span class="msg">
+							<h3>60 jours</h3>
+							<p>De validité</p>
+						</span>
+					</span>
+						<span class="bottom">CHOISIR</span>
+					</label>
+				</div>
 			</div>
-			<div class="put">
-				<label for="mail">Entrez adresse mail</label>
-				<input type="email" class="mail" id="mail" placeholder="(EX: toto@gmail.com)">
-			</div>
-			<div class="put">
-				<label for="pass">Entrez mot de passe</label>
-				<input type="password" class="pass" id="pass" placeholder="*******">
-				<figure class="see"><img src="../ressources/images/eyeOpen.png" alt="Eye open"></figure>
-			</div>
-			<button type="submit" class="ok">MODIFIER</button>
-			<a href="./loadingPage.html" class="go">SUCCESS</a>
+			<button type="submit" class="ok">OBTENIR</button>
 		</form>
 	</main>
+	
+	<script src="../js/playMenu.js" defer></script>
 </body>
 </html>
