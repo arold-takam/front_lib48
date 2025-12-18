@@ -322,7 +322,7 @@ body {
             padding: 3rem;
 
             & .subscribeZone{
-                display: flex;
+                display: none;
                 flex-direction: column;
                 align-items: center;
                 gap: 2rem;
@@ -350,7 +350,7 @@ body {
             }
 
             & .cardItem{
-                display: none;
+                display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
