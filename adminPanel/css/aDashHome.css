@@ -210,6 +210,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         gap: 1rem;
         width: calc(100% - 6rem);
         height: 100%;
@@ -453,6 +454,10 @@ body {
                         font-weight: bold;
                         border-bottom: 2px solid var(--mainColor);
                         padding: .5rem;
+
+                        & p{
+                            font-size: large;
+                        }
 
                         & img{
                             width: 1.5rem;

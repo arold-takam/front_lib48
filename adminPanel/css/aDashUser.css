@@ -24,13 +24,15 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         gap: 1rem;
         width: 32%;
         height: 100%;
         background-color: var(--whiteColor);
         border-radius: 2rem;
-        overflow: hidden;
+        overflow: hidden scroll;
         padding: 1rem;
+        scroll-behavior: smooth;
         transition: all .5s ease;
 
         & .menuIcon{
@@ -155,7 +157,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1rem;
+                gap: 2rem;
                 width: 100%;
                 list-style: none;
 
@@ -170,11 +172,14 @@ body {
                         align-items: center;
                         gap: .5rem;
                         color: var(--secondaryColor);
-                        font-size: larger;
                         font-weight: 570;
                         text-align: left;
                         text-decoration: none;
                         transition: all .5s ease;
+
+                        & p{
+                            font-size: large;
+                        }
 
                         &:hover{
                             color: var(--mainColor);
@@ -195,11 +200,12 @@ body {
         }
 
         & footer{
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 12rem;
+            height: 24rem;
             background-color: var(--secondaryColor);
             border-radius: 2rem;
             color: var(--whiteColor);
@@ -216,8 +222,9 @@ body {
         height: 100%;
         background-color: var(--whiteColor);
         border-radius: 2rem;
-        overflow: hidden;
+        overflow: hidden scroll;
         padding: 1rem;
+        scroll-behavior: smooth;
 
         & header{
             display: flex;
@@ -243,6 +250,11 @@ body {
             & .titleFrame{
                 color: var(--mainColor);
                 text-align: right;
+
+
+                & h1{
+                    font-size: x-large;
+                }
             }
         }
 
@@ -272,7 +284,11 @@ body {
                     padding: 1rem;
 
                     & b{
-                        font-size: xx-large;
+                        font-size: x-large;
+                    }
+
+                    & p{
+                        font-size: large;
                     }
                 }
             }
@@ -290,6 +306,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                justify-content: space-between;
                 gap: 1rem;
                 width: 40%;
                 height: 100%;
@@ -313,6 +330,10 @@ body {
                         justify-content: space-between;
                         width: 100%;
                         color: var(--whiteColor);
+
+                        & h2, & p, & b{
+                            font-size: x-large;
+                        }
                     }
 
                     & .middle{
@@ -325,7 +346,11 @@ body {
                         text-align: center;
 
                         & b{
-                            font-size: xxx-large;
+                            font-size: 5rem;
+                        }
+
+                        & p{
+                            font-size: x-large;
                         }
                     }
 
@@ -356,7 +381,7 @@ body {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    gap: 2rem;
+                    gap: 3rem;
                     width: 100%;
 
                     & .groupInfo{
@@ -373,6 +398,14 @@ body {
                             justify-content: space-between;
                             width: 100%;
                             font-size: larger;
+
+                            & p{
+                                font-size: x-large;
+                            }
+
+                            & b{
+                                font-size: large;
+                            }
                         }
                     }
 
@@ -416,7 +449,7 @@ body {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        width: 3rem;
+                        width: 4rem;
                         aspect-ratio: 4/4;
                         background-color: var(--mainColor);
                         border-radius: 50%;
@@ -426,6 +459,10 @@ body {
                             aspect-ratio: 4/4;
                             object-fit: cover;
                         }
+                    }
+
+                    & h2{
+                        font-size: x-large;
                     }
                 }
 
@@ -450,11 +487,16 @@ body {
                             justify-content: center;
                             gap: 1rem;
                             width: calc(100% / 3);
+                            height: 4rem;
                             color: var(--mainColor);
                             font-size: larger;
                             font-weight: bold;
                             border-bottom: 2px solid var(--mainColor);
                             padding: .5rem;
+
+                            & p{
+                                font-size: large;
+                            }
 
                             & img{
                                 width: 1.5rem;
@@ -470,7 +512,7 @@ body {
                         justify-content: flex-start;
                         gap: 1rem;
                         width: 100%;
-                        height: 26rem;
+                        height: 32rem;
                         list-style: none;
                         overflow: hidden scroll;
                         scroll-behavior: smooth;
@@ -655,7 +697,7 @@ body {
                             text-align: center;
     
                             & b{
-                                font-size: xxx-large;
+                                font-size: xx-large;
                             }
                         }
     

@@ -166,11 +166,14 @@ body {
                         align-items: center;
                         gap: .5rem;
                         color: var(--secondaryColor);
-                        font-size: larger;
                         font-weight: 570;
                         text-align: left;
                         text-decoration: none;
                         transition: all .5s ease;
+
+                        & p{
+                            font-size: large;
+                        }
 
                         &:hover{
                             color: var(--mainColor);
@@ -241,8 +244,9 @@ body {
                 color: var(--mainColor);
                 text-align: right;
 
+
                 & h1{
-                    font-size: xx-large;
+                    font-size: x-large;
                 }
             }
         }
@@ -255,6 +259,10 @@ body {
             gap: 2rem;
             width: 100%;
             height: calc(100% - 5rem);
+
+            & h2{
+                font-size: xx-large;
+            }
 
             & .btn{
                 display: flex;
