@@ -531,115 +531,119 @@ body {
         overflow: hidden;
         padding: 1rem;
 
-        & aside{
+        & aside {
             overflow: hidden scroll;
             scroll-behavior: smooth;
 
-            & .menuIcon{
+            & .menuIcon {
                 width: 2rem;
             }
 
-            & .profile{
+            & .profile {
 
-                & .photo{
+                & .photo {
                     width: 10rem;
-                }
-            }
 
-            & .menu{
-
-                & h2{
-                    font-size: 1.8rem;
-                }
-            }
-
-            & footer{
-                flex-shrink: 0;
-                min-height: 14rem;
-            }
-        }
-
-        & main{
-            overflow: hidden scroll;
-            scroll-behavior: smooth;
-
-            & header{
-                height: 4rem;
-
-                & .logoLink{
-                    height: 80%;
+                    & .photo {
+                        width: 10rem;
+                    }
                 }
 
-                & .titleFrame{
+                & .menu {
 
-                    & h1{
+                    & h2 {
                         font-size: 1.8rem;
                     }
                 }
+
+                & footer {
+                    flex-shrink: 0;
+                    min-height: 14rem;
+                }
             }
 
-            & .infoProfile{
+            & main {
+                overflow: hidden scroll;
+                scroll-behavior: smooth;
 
-                & .listInfo{
-                    gap: .5rem;
+                & header {
+                    height: 4rem;
 
-                    & li{
+                    & .logoLink {
+                        height: 80%;
+                    }
 
-                        & p{
-                            font-size: large;
+                    & .titleFrame {
+
+                        & h1 {
+                            font-size: 1.8rem;
                         }
+                    }
+                }
 
-                        & b{
-                            font-size: larger;
-                        }
+                & .infoProfile {
 
-                        & .right{
-                            gap: .5rem;
+                    & .listInfo {
+                        gap: .5rem;
 
-                            & .eye{
-                                width: 2rem;
+                        & li {
+
+                            & p {
+                                font-size: large;
+                            }
+
+                            & b {
+                                font-size: larger;
+                            }
+
+                            & .right {
+                                gap: .5rem;
+
+                                & .eye {
+                                    width: 2rem;
+                                }
                             }
                         }
                     }
-                }
 
-                & .ctaProfile{
+                    & .ctaProfile {
 
-                    & a{
-                        padding: .8rem 0;
-                        text-decoration: none;
-                    }
-                }
-            }
-
-            & .panelActivity{
-
-                & .titleActivity{
-
-                    & .left{
-
-                        & .clock{
-                            width: 1.5rem;
-                        }
-
-                        & h2{
-                            font-size: 1.3rem;
+                        & a {
+                            padding: .8rem 0;
+                            text-decoration: none;
                         }
                     }
+                }
 
-                    & .searchZone{
-                        width: 18rem;
-                        height: 2.5rem;
+                & .panelActivity {
 
-                        & input{
-                            font-size: small;
+                    & .titleActivity {
+
+                        & .left {
+
+                            & .clock {
+                                width: 1.5rem;
+                            }
+
+                            & h2 {
+                                font-size: 1.3rem;
+                            }
                         }
 
-                        & .go{
+                        & .searchZone {
+                            width: 18rem;
+                            height: 2.5rem;
 
-                            & img{
-                                height: 60%;
-                                aspect-ratio: 4/4;
+                            & input {
+                                font-size: small;
+                            }
+
+                            & .go {
+
+                                & img {
+                                    height: 60%;
+                                    aspect-ratio: 4/4;
+                                }
                             }
                         }
                     }
