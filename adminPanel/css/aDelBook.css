@@ -1,0 +1,315 @@
+:root{
+    --mainColor: #0061FF;
+    --secondaryColor: #36C3F5;
+    --whiteColor:#ffff;
+    --blackColor: #000000;
+    --darkGreyColor: #757575;
+    --lightGreyColor: #BDBDBD;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--secondaryColor);
+    overflow: hidden;
+    padding: 1rem;
+
+    & aside{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 32%;
+        height: 100%;
+        background-color: var(--whiteColor);
+        border-radius: 2rem;
+        overflow: hidden scroll;
+        padding: 1rem;
+        scroll-behavior: smooth;
+        transition: all .5s ease;
+
+        & .menuIcon{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            aspect-ratio: 4/4;
+            background-color: var(--mainColor);
+            border-radius: .5rem;
+
+            & img{
+                width: 98%;
+                aspect-ratio: 4/4;
+                object-fit: cover;
+            }
+        }
+
+        & .profile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+
+            & .photo{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 12rem;
+                aspect-ratio: 4/4;
+                background-color: var(--mainColor);
+                border-radius: 50%;
+                padding: 1rem;
+
+                & img{
+                    width: 100%;
+                    aspect-ratio: 4/4;
+                    border-radius: 50%;
+                    object-fit: contain;
+                }
+            }
+
+            & .info{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .5rem;
+
+                & h1{
+                    font-size: x-large;
+                }
+
+                & .goProfile{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 14rem;
+                    background-color: var(--mainColor);
+                    border-radius: 2rem;
+                    color: var(--whiteColor);
+                    font-size: large;
+                    font-weight: bold;
+                    padding: .5rem 0;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        & .separator{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & hr{
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                height: .2rem;
+                background-color: var(--mainColor);
+                border-radius: 2rem;
+                transform: translateY(-50%);
+                z-index: 0;
+            }
+
+            & .point{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 1rem;
+                aspect-ratio: 4/4;
+                background-color: var(--mainColor);
+                border-radius: 50%;
+                z-index: 2;
+            }
+        }
+
+        & .menu{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: .5rem;
+
+            & h2{
+                color: var(--mainColor);
+                font-size: xx-large;
+            }
+
+            & .navLink{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+                width: 100%;
+                list-style: none;
+
+                & li{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 100%;
+
+                    & a{
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                        color: var(--secondaryColor);
+                        font-weight: 570;
+                        text-align: left;
+                        text-decoration: none;
+                        transition: all .5s ease;
+
+                        & p{
+                            font-size: large;
+                        }
+
+                        &:hover{
+                            color: var(--mainColor);
+                            font-weight: bold;
+                        }
+                    }
+
+                    &.active{
+
+                        & a{
+                            color: var(--mainColor);
+                            font-size: x-large;
+                            font-weight: bolder;
+                        }
+                    }
+                }
+            }
+        }
+
+        & footer{
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 24rem;
+            background-color: var(--secondaryColor);
+            border-radius: 2rem;
+            color: var(--whiteColor);
+        }
+    }
+
+    & main{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        width: calc(100% - 6rem);
+        height: 100%;
+        background-color: var(--whiteColor);
+        border-radius: 2rem;
+        overflow: hidden scroll;
+        padding: 1rem;
+        scroll-behavior: smooth;
+
+        & header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 5rem;
+
+            & .logoLink{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                height: 90%;
+                aspect-ratio: 16/9;
+
+                & img{
+                    height: 100%;
+                    aspect-ratio: 16/9;
+                    object-fit: cover;
+                }
+            }
+
+            & .titleFrame{
+                color: var(--mainColor);
+                text-align: right;
+
+
+                & h1{
+                    font-size: x-large;
+                }
+            }
+        }
+
+        & .mainSect{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            height: calc(100% - 5rem);
+
+            & h2{
+                font-size: x-large;
+            }
+
+            & .btn{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 4rem;
+                width: 80%;
+
+                & a, button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 16rem;
+                    border-radius: 2rem;
+                    font-size: large;
+                    padding: 1rem 0;
+                    text-decoration: none;
+                }
+                & .ok{
+                    background-color: var(--mainColor);
+                    border: none;
+                    color: var(--whiteColor);
+                    transition: all .5s ease;
+
+                    &:hover{
+                        border: 1px solid var(--secondaryColor);
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+                & .back{
+                    background-color: var(--whiteColor);
+                    border: 2px solid var(--secondaryColor);
+                    color: var(--secondaryColor);
+                    transition: all .3s ease;
+
+                    &:hover{
+                        border-color: var(--mainColor);
+                        color: var(--mainColor);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*RESPONSIVE UP TO LAPTOP SCREEN------------------------*/

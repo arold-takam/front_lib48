@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../ressources/images/logo.png">
+	<title>Lib48/Modifier un livre</title>
+	<link rel="stylesheet" href="../css/generalStyle.css">
+	<link rel="stylesheet" href="../css/aUpdateBook.css">
+</head>
+<body>
+	<aside>
+		<figure class="menuIcon"><img src="../ressources/images/menuClose.png" alt="menu close icon"></figure>
+		<section class="profile">
+			<figure class="photo"><img src="../ressources/images/userProfile.png" alt="user profile"></figure>
+			<div class="info">
+				<h1>Toto Le Cloon</h1>
+				<p>toto@gmail.com</p>
+				<a href="./aDashHome.html" class="goProfile">VOIR PLUS</a>
+			</div>
+		</section>
+		<div class="separator">
+			<hr>
+			<div class="point"></div>
+		</div>
+		<section class="menu">
+			<h2>Ici, vous pouvez...</h2>
+			<ul class="navLink">
+				<li>
+					<a href="../html/aDashAccount.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les comptes</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="aDashBook.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les livre</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashCategory.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les categories</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashBorrow.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les emprunts</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashReturn.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les retours</p>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<p>Here will be the footer !</p>
+		</footer>
+	</aside>
+	<main>
+		<header>
+			<a href="aDashHome.html" class="logoLink"><img src="../ressources/images/logo.png" alt="admin logo"></a>
+			<div class="titleFrame"><h1>Modifier un livre</h1></div>
+		</header>
+		<section class="fieldForm">
+			<form class="updBook">
+				<div class="stateSelect">
+					<label for="state">Sélectionner le nouvel état du livre :</label>
+					<select name="state" id="state" class="state">
+						<option disabled selected aria-disabled="true">Choisissez un état</option>
+						<option value="NEUF">NEUF</option>
+						<option value="BON_ETAT">BON ÉTAT</option>
+						<option value="MAUVAIS_ETAT">MAUVAIS ÉTAT</option>
+					</select>
+				</div>
+				<div class="categorySelect">
+					<label for="category">Sélectionner la nouvelle Catégorie :</label>
+					<select name="category" id="category" class="category" required>
+						<option disabled selected>Choisissez votre catégorie</option>
+					</select>
+				</div>
+				<div class="put">
+					<label for="bookTitle">Entrez le titre du livre</label>
+					<input type="text" name="bookTitle" id="bookTitle" class="bookTitle" placeholder="(EX: le livre un)">
+				</div>
+				<div class="put">
+					<label for="author">Entrez le nom de l'auteur</label>
+					<input type="text" name="author" id="author" class="author" placeholder="(EX: Mr Doloje.)">
+				</div>
+				<div class="put">
+					<label for="editor">Entrez le nom de l'éditeur</label>
+					<input type="text" name="editor" id="editor" class="editor" placeholder="(EX: Doloje House.)">
+				</div>
+				<div class="available">
+					<p>Ce livre est-il disponible?</p>
+					<div class="choice">
+						<input type="radio" name="isAvailable" id="yes">
+						<label for="yes">yes</label>
+					</div>
+					<div class="choice">
+						<input type="radio" name="isAvailable" id="no">
+						<label for="no">no</label>
+					</div>
+				</div>
+				<div class="coverField">
+					<label for="cover">Choisir la couverture du livre</label>
+					<input type="file" name="cover" id="cover" class="cover">
+				</div>
+				<div class="ctaZone">
+					<a href="./aDashBookDetails.html" class="back">RETOURNER</a>
+					<button type="submit" class="go">MODIFIER CE LIVRE</button>
+				</div>
+			</form>
+		</section>
+	</main>
+	
+	<script src="../js/menuManagement.js" defer></script>
+</body>
+</html>
