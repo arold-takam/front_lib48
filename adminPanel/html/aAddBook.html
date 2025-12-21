@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../ressources/images/logo.png">
+	<title>Lib48/Ajouter un nouveau livre</title>
+	<link rel="stylesheet" href="../css/generalStyle.css">
+	<link rel="stylesheet" href="../css/aAddBook.css">
+</head>
+<body>
+	<aside>
+		<figure class="menuIcon"><img src="../ressources/images/menuClose.png" alt="menu close icon"></figure>
+		<section class="profile">
+			<figure class="photo"><img src="../ressources/images/userProfile.png" alt="user profile"></figure>
+			<div class="info">
+				<h1>Toto Le Cloon</h1>
+				<p>toto@gmail.com</p>
+				<a href="./aDashHome.html" class="goProfile">VOIR PLUS</a>
+			</div>
+		</section>
+		<div class="separator">
+			<hr>
+			<div class="point"></div>
+		</div>
+		<section class="menu">
+			<h2>Ici, vous pouvez...</h2>
+			<ul class="navLink">
+				<li>
+					<a href="../html/aDashAccount.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les comptes</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="aDashBook.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les livre</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashCategory.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les categories</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashBorrow.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les emprunts</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashReturn.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les retours</p>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<p>Here will be the footer !</p>
+		</footer>
+	</aside>
+	<main>
+		<header>
+			<a href="aDashHome.html" class="logoLink"><img src="../ressources/images/logo.png" alt="admin logo"></a>
+			<div class="titleFrame"><h1>Ajouter un nouveau livre</h1></div>
+		</header>
+		<section class="fieldForm">
+			<form class="addBook">
+				<div class="categorySelect">
+					<label for="category">Sélectionner une Catégorie :</label>
+					<select name="category" id="category" class="category" required>
+						<option disabled selected>Choisissez votre catégorie</option>
+					</select>
+				</div>
+				<div class="put">
+					<label for="bookTitle">Entrez le titre du livre</label>
+					<input type="text" name="bookTitle" id="bookTitle" class="bookTitle" placeholder="(EX: le livre un)" required>
+				</div>
+				<div class="put">
+					<label for="author">Entrez le nom de l'auteur</label>
+					<input type="text" name="author" id="author" class="author" placeholder="(EX: Mr Doloje.)">
+				</div>
+				<div class="put">
+					<label for="editor">Entrez le nom de l'éditeur</label>
+					<input type="text" name="editor" id="editor" class="editor" placeholder="(EX: Doloje House.)">
+				</div>
+				<div class="coverField">
+					<label for="cover">Choisir la couverture du livre</label>
+					<input type="file" name="cover" id="cover" class="cover" required>
+				</div>
+				<div class="ctaZone">
+					<a href="./aDashBook.html" class="back">RETOURNER</a>
+					<button type="submit" class="go">AJOUTER CE LIVRE</button>
+				</div>
+			</form>
+		</section>
+	</main>
+	
+	<script src="../js/menuManagement.js" defer></script>
+</body>
+</html>
