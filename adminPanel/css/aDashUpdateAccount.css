@@ -1,10 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
 :root{
     --mainColor: #0061FF;
     --secondaryColor: #36C3F5;
@@ -422,37 +415,88 @@ body {
 }
 
 /*RESPONSIVE UP TO LAPTOP SCREEN------------------------*/
-@media (max-width : 1280px) {
-    body{
-
+@media(max-width: 1024px){
+    body {
+    
         & aside{
-            font-size: small;
-
+            overflow: hidden scroll;
+            scroll-behavior: smooth;
+    
             & .menuIcon{
-                right: .5rem;
                 width: 2rem;
             }
-
+    
             & .profile{
-
-                & .info{
+    
+                & .photo{
+                    width: 10rem;
+                }
+            }
+    
+            & .menu{
+    
+                & h2{
+                    font-size: 1.8rem;
+                }
+            }
+    
+            & footer{
+                flex-shrink: 0;
+                min-height: 14rem;
+            }
+        }
+    
+        & main{
+            gap: 1rem;
+            overflow: hidden scroll;
+            scroll-behavior: smooth;
+    
+            & header{
+                height: 4rem;
+    
+                & .logoLink{
+                    height: 80%;
+                }
+    
+                & .titleFrame{
 
                     & h1{
-                        font-size: x-large;
+                        font-size: 1.8rem;
                     }
                 }
             }
 
-            & .menu{
-
-                & h2{
-                    font-size: x-large;
+            & .mainContent{
+    
+                & .updateAccount{
+                    gap: 1rem;
+    
+                    & .put{
+                        height: 2.5rem;
+    
+                        & label{
+                            font-size: small;
+                            padding: 0 .5rem;
+                        }
+    
+                        & input{
+                            font-size: small;
+                            padding: .5rem 2rem;
+                        }
+                    }
+    
+                    & .oderConnect{
+    
+                        & li{
+                            width: 2rem;
+                        }
+                    }
+    
+                    & .go{
+                        padding: .5rem 0;
+                    }
                 }
             }
-        }
-
-        & main{
-
         }
     }
 }
