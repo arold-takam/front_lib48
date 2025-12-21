@@ -1,0 +1,66 @@
+:root{
+    --mainColor: #0061FF;
+    --secondaryColor: #0061FF;
+    --whiteColor: #FFFFFF;
+    --blackColor: #000000;
+    --lightGey: #F5F5F5;
+    --darkDrey: #1A1A1A;
+}
+
+body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100dvh;
+    font-size: larger;
+    overflow: hidden;
+    background: url("../ressources/images/backGroundLoadin.png") no-repeat center;
+    background-size: cover;
+
+    & .loading{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 52rem;
+        aspect-ratio: 4/4;
+        background-color: var(--whiteColor);
+        border-radius: 50%;
+        text-align: center;
+        padding: 2rem;
+
+        & h1{
+            color: var(--mainColor);
+            font-size: 4rem;
+        }
+
+        & figure{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 8rem;
+            height: 8rem;
+            background-color: var(--mainColor);
+            border-radius: 50%;
+        }
+
+        & .loadIcon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+
+            & img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

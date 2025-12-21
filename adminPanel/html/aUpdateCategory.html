@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../ressources/images/logo.png">
+	<title>Lib48/Modifier une categorie</title>
+	<link rel="stylesheet" href="../css/aUpdateCategory.css">
+</head>
+<body>
+	<aside>
+		<figure class="menuIcon"><img src="../ressources/images/menuClose.png" alt="menu close icon"></figure>
+		<section class="profile">
+			<figure class="photo"><img src="../ressources/images/userProfile.png" alt="user profile"></figure>
+			<div class="info">
+				<h1>Toto Le Cloon</h1>
+				<p>toto@gmail.com</p>
+				<a href="./aDashHome.html" class="goProfile">VOIR PLUS</a>
+			</div>
+		</section>
+		<div class="separator">
+			<hr>
+			<div class="point"></div>
+		</div>
+		<section class="menu">
+			<h2>Ici, vous pouvez...</h2>
+			<ul class="navLink">
+				<li>
+					<a href="../html/aDashAccount.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les comptes</p>
+					</a>
+				</li>
+				<li>
+					<a href="aDashBook.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les livre</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="./aDashCategory.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les categories</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashBorrow.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les emprunts</p>
+					</a>
+				</li>
+				<li>
+					<a href="./aDashReturn.html">
+						<b>&rightarrow;</b>
+						<p>Gérer les retours</p>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<p>Here will be the footer !</p>
+		</footer>
+	</aside>
+	<main>
+		<header>
+			<a href="aDashHome.html" class="logoLink"><img src="../ressources/images/logo.png" alt="admin logo"></a>
+			<div class="titleFrame"><h1>Modifier une catégorie</h1></div>
+		</header>
+		<section class="fieldForm">
+			<form class="updateCategory">
+				<div class="put">
+					<label for="categoryTitle">Entrez le titre de la catégorie</label>
+					<input type="text" name="categoryTitle" id="categoryTitle" class="categoryTitle" placeholder="(EX: la catégorie une)" required>
+				</div>
+				<div class="textZone">
+					<label for="details">Entrez une description</label>
+					<textarea name="details" id="details" class="details" placeholder="(EX: La cate de Mr Doloje.)"></textarea>
+				</div>
+				<div class="ctaZone">
+					<a href="./aDashCategoryDetails.html" class="back">RETOURNER</a>
+					<button type="submit" class="go">MODIFIER CETTE CATÉGORIE</button>
+				</div>
+			</form>
+		</section>
+	</main>
+	
+	<script src="../js/menuManagement.js" defer></script>
+</body>
+</html>
