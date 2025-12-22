@@ -23,13 +23,32 @@ body {
   justify-content: center;
   gap: 2rem;
   width: 100%;
-  height: 100vh;
+  overflow: hidden scroll;
+  padding: 2rem;
+  scroll-behavior: smooth;
 
   & .well {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+
+    & .logo{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 8rem;
+      aspect-ratio: 16/9;
+
+      & .logoIcon{
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    & h1, & p{
+      font-size: x-large;
+    }
   }
 
   & .signIn {
@@ -37,7 +56,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    width: 32%;
+    width: 48rem;
     padding: 2rem;
 
     & .put {
@@ -193,104 +212,6 @@ body {
       font-size: larger;
       font-weight: bold;
       padding: 1rem 0;
-    }
-  }
-}
-
-/* RESPONSIVE DESIGN UP TO LAPTOP VERSION */
-@media (max-width: 1024px) {
-  body {
-    gap: 1rem;
-    padding: 1rem 0;
-
-    & .well {
-      gap: 0;
-
-      & .logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 6rem;
-        aspect-ratio: 16/9;
-
-        & .logoIcon {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-
-    & .signIn {
-      gap: 1rem;
-      width: 40%;
-      padding: 0.5rem 0;
-
-      & .put {
-        width: 100%;
-        height: 3rem;
-
-        & label {
-          padding: 0 0.5rem;
-        }
-
-        & input {
-          font-size: small;
-        }
-
-        & figure {
-
-          & img {
-            width: 90%;
-            height: 90%;
-            object-fit: cover;
-          }
-        }
-      }
-
-      & .remind {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-
-        & .check {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        & .forget {
-          color: var(--secondaryColor);
-          text-decoration: none;
-          transition: all 0.5s ease;
-
-          &:hover {
-            color: var(--mainColor);
-            font-weight: bold;
-          }
-        }
-      }
-
-      & .ctaZone {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        width: 100%;
-      }
-
-      & .oderConnect {
-
-        & li {
-          width: 2.5rem;
-        }
-      }
-
-      & .go {
-        font-size: small;
-        padding: 1rem 0;
-      }
     }
   }
 }
