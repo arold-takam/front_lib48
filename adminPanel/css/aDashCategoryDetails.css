@@ -150,14 +150,14 @@ body {
 
             & h2{
                 color: var(--mainColor);
-                font-size: xx-large;
+                font-size: x-large;
             }
 
             & .navLink{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 2rem;
+                gap: .5rem;
                 width: 100%;
                 list-style: none;
 
@@ -394,8 +394,8 @@ body {
                         cursor: pointer;
 
                         & img{
-                            height: 60%;
-                            aspect-ratio: 16/9;
+                            height: 80%;
+                            aspect-ratio: 4/4;
                         }
                     }
                 }
@@ -423,10 +423,13 @@ body {
                         gap: 1rem;
                         width: calc(100% / 4);
                         color: var(--mainColor);
-                        font-size: larger;
                         font-weight: bold;
                         border-bottom: 2px solid var(--mainColor);
                         padding: .5rem;
+
+                        & p{
+                            font-size: large;
+                        }
 
                         & img{
                             width: 1.5rem;

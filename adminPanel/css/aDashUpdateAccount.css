@@ -144,14 +144,14 @@ body {
 
             & h2{
                 color: var(--mainColor);
-                font-size: xx-large;
+                font-size: x-large;
             }
 
             & .navLink{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 2rem;
+                gap: .5rem;
                 width: 100%;
                 list-style: none;
 
@@ -209,13 +209,13 @@ body {
     & main{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 1rem;
         width: calc(100% - 6rem);
         height: 100%;
         background-color: var(--whiteColor);
         border-radius: 2rem;
-        overflow: hidden;
+        overflow: hidden scroll;
         padding: 1rem;
 
         & header{
@@ -256,14 +256,14 @@ body {
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: calc(100% - 5rem);
+            height: calc(100% - 6rem);
 
             & .updateAccount{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 2rem;
-                width: 40rem;
+                width: 48rem;
                 padding: 2rem;
 
                 & .put{
@@ -419,93 +419,6 @@ body {
                     font-size: larger;
                     font-weight: bold;
                     padding: 1rem 0;
-                }
-            }
-        }
-    }
-}
-
-/*RESPONSIVE UP TO LAPTOP SCREEN------------------------*/
-@media(max-width: 1024px){
-    body {
-    
-        & aside{
-            overflow: hidden scroll;
-            scroll-behavior: smooth;
-    
-            & .menuIcon{
-                width: 2rem;
-            }
-    
-            & .profile{
-    
-                & .photo{
-                    width: 10rem;
-                }
-            }
-    
-            & .menu{
-    
-                & h2{
-                    font-size: 1.8rem;
-                }
-            }
-    
-            & footer{
-                flex-shrink: 0;
-                min-height: 14rem;
-            }
-        }
-    
-        & main{
-            gap: 1rem;
-            overflow: hidden scroll;
-            scroll-behavior: smooth;
-    
-            & header{
-                height: 4rem;
-    
-                & .logoLink{
-                    height: 80%;
-                }
-    
-                & .titleFrame{
-
-                    & h1{
-                        font-size: 1.8rem;
-                    }
-                }
-            }
-
-            & .mainContent{
-    
-                & .updateAccount{
-                    gap: 1rem;
-    
-                    & .put{
-                        height: 2.5rem;
-    
-                        & label{
-                            font-size: small;
-                            padding: 0 .5rem;
-                        }
-    
-                        & input{
-                            font-size: small;
-                            padding: .5rem 2rem;
-                        }
-                    }
-    
-                    & .oderConnect{
-    
-                        & li{
-                            width: 2rem;
-                        }
-                    }
-    
-                    & .go{
-                        padding: .5rem 0;
-                    }
                 }
             }
         }
