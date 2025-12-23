@@ -27,6 +27,11 @@ async function loadBookDetails() {
 }
 
 function displayBookDetails(book) {
+    const pageTitle = document.querySelector('.titleFrame h1');
+    pageTitle.innerHTML = `<h1>${book.titre}</h1>`;
+
+    console.log("Book page url: ", book.urlCoverImage);
+
     const card = document.querySelector('.bookCard .card');
     card.style.background = `url(${book.urlCoverImage}) center no-repeat || url("../ressources/images/fondMenu.jpg") center no-repeat`;
     card.style.backgroundSize = "cover";
@@ -35,7 +40,7 @@ function displayBookDetails(book) {
     infoList.innerHTML = `
         <li>
             <p>Catégorie :</p>
-            <b>${book.category?.name || 'N/A'}</b>
+            <b>${book.category?.nom || 'N/A'}</b>
         </li>
         <li>
             <p>Auteur :</p>
