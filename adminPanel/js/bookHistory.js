@@ -2,7 +2,7 @@
 
 // 1. Fonction de chargement de l'historique
 async function loadBookHistory(bookTitle) {
-    const panelDown = document.querySelector('.panel .panelDown');
+    const panelDown = document.querySelector('.panelDown'); // Cible directe
     if (!panelDown) return;
 
     try {
@@ -12,26 +12,36 @@ async function loadBookHistory(bookTitle) {
             }
         });
 
-        if (!response.ok) throw new Error('Historique introuvable');
         const histories = await response.json();
 
-        panelDown.innerHTML = ''; // Nettoyage
+        // Vider la liste avant d'ajouter
+        panelDown.innerHTML = '';
+
+        if (histories.length === 0) {
+            panelDown.innerHTML = '<li class="bookLine">Aucun historique pour ce livre.</li>';
+            return;
+        }
+
         histories.forEach(h => {
-            const dateStr = new Date(h.dateTime).toLocaleString('fr-FR');
+            // Mapping strict sur ton JSON Postman
+            const type = h.typeOpperation; // 2 'p'
+            const etat = h.etatOperation;  // 1 'p'
+            const dateStr = h.dateTime ? new Date(h.dateTime).toLocaleString('fr-FR') : 'Date inconnue';
+
             const li = document.createElement('li');
             li.className = 'bookLine';
             li.innerHTML = `
                 <ul class="infoLine">
-                    <li>${h.typeOpperation}</li>
-                    <li class="${h.etatOperation.toLowerCase()}">${h.etatOperation}</li>
+                    <li>${type}</li>
+                    <li class="${etat.toLowerCase()}">${etat}</li>
                     <li>${dateStr}</li>
                 </ul>
             `;
             panelDown.appendChild(li);
         });
     } catch (error) {
-        console.error('Erreur:', error);
-        panelDown.innerHTML = '<li class="bookLine">Aucune activité trouvée.</li>';
+        console.error('Erreur fetch:', error);
+        panelDown.innerHTML = '<li class="bookLine">Erreur de connexion au serveur.</li>';
     }
 }
 

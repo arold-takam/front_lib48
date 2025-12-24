@@ -17,32 +17,40 @@ document.addEventListener('DOMContentLoaded', async () => {
             borrowContainer.innerHTML = '<p style="font-size: large; color: red">No borrows found.</p>';
         }
 
-        borrows.forEach(b => {
-            // 1. Accès sécurisé aux données imbriquées
-            const livre = b.BookTitle;
-            const titreLivre = livre;
-            // TODO: Intergrer la recuperation des ID.
+        // On utilise 'for...of' car 'forEach' ne gère pas bien l'asynchrone (await)
+        for (const b of borrows) {
+            const titreLivre = b.BookTitle;
+            let bookId = "#"; // Valeur par défaut si non trouvé
+            let statusDispo = "INCONNU";
 
-            // 2. Gestion du statut (boolean vers texte)
-            const statutTexte = (livre && livre.estDisponible) ? "DISPONIBLE" : "EMPRUNTÉ";
-            const statutClasse = statutTexte.toLowerCase();
+            try {
+                // 1. Appel au controller via le titre du livre
+                const response = await fetch(`http://localhost:8080/api/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
+                    headers: { 'Authorization': `Basic ${auth}` }
+                });
 
-            // 3. Gestion de la date (dateEmprunt dans ton modèle Java)
-            const dateStr = b.dateEmprunt ? new Date(b.dateEmprunt).toLocaleDateString('fr-FR') : 'Date inconnue';
+                if (response.ok) {
+                    const bookData = await response.json();
+                    bookId = bookData.id; // On récupère l'ID
+                    statusDispo = bookData.estDisponible ? "TERMINE" : "EN COURS";
+                }
+            } catch (err) {
+                console.error("Erreur lors de la récupération de l'ID du livre:", err);
+            }
 
-            // 4. Création de l'élément cible
+            // 2. Création de la ligne avec l'ID récupéré
             const ul = document.createElement('ul');
             ul.className = 'infoLine';
 
             ul.innerHTML = `
         <li><a href="../html/aDashBookDetails.html?id=${bookId}">${titreLivre}</a></li>
-        <li class="${statutClasse}">${statutTexte}</li>
+        <li class="${statusDispo.toLowerCase()}">${statusDispo}</li>
         <li>Emprunt de ${b.delaiEmprunt} jours</li>
-        <li>${dateStr}</li>
+        <li>${new Date(b.dateEmprunt).toLocaleDateString('fr-FR')}</li>
     `;
 
             borrowContainer.appendChild(ul);
-        });
+        }
 
     } catch (err) {
         console.error("Erreur Emprunts:", err);
