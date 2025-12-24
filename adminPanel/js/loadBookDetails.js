@@ -33,7 +33,12 @@ function displayBookDetails(book) {
     console.log("Book page url: ", book.urlCoverImage);
 
     const card = document.querySelector('.bookCard .card');
-    card.style.background = `url(${book.urlCoverImage}) center no-repeat || url("../ressources/images/fondMenu.jpg") center no-repeat`;
+    // On définit l'image : soit celle du livre, soit le fond par défaut
+    const cover = book.urlCoverImage ? `url(${book.urlCoverImage})` : `url("../ressources/images/fondMenu.jpg")`;
+
+    card.style.backgroundImage = cover;
+    card.style.backgroundPosition = "center";
+    card.style.backgroundRepeat = "no-repeat";
     card.style.backgroundSize = "cover";
 
     const infoList = document.querySelector('.bookCard .groupInfo');

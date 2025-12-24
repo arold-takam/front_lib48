@@ -322,6 +322,7 @@ body {
                     background: url("../ressources/images/fondMenu.jpg") center no-repeat;
                     background-size: cover;
                     border-radius: 1rem;
+                    box-shadow: 0 0 4px 1px #0061ff;
                     padding: 1rem;
                 }
 

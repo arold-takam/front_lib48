@@ -20,6 +20,9 @@ async function fetchAndDisplayBooks() {
 
         const books = await response.json();
         container.innerHTML = "";
+        if (books.length === 0){
+            container.innerHTML = `<p style='padding:20px; color:red; font-size: x-large;'>No Book yet.</p>`;
+        }
 
         books.forEach(book => {
             const li = document.createElement('li');
