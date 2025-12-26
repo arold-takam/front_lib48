@@ -77,6 +77,17 @@ async function displayBookDetails(book) {
     // Mise à jour sidebar
     const sidebarMail = document.querySelector('.profile .info p');
     if (sidebarMail) sidebarMail.textContent = localStorage.getItem('userMail');
+
+// GESTION DES CTA------------------------------------------------------------
+    const delBtn = document.querySelector('.del');
+    if (delBtn) {
+        delBtn.href = `../html/aDelBook.html?id=${book.id}`;
+    }
+
+    const updBtn = document.querySelector('.cta .update');
+    if (updBtn) {
+        updBtn.href = `../html/aUpdateBook.html?id=${book.id}`;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', loadBookDetails);
