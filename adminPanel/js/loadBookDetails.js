@@ -1,69 +1,82 @@
 const params = new URLSearchParams(window.location.search);
 const bookID = params.get("id");
+const auth = localStorage.getItem('auth');
 
-console.log("Book ID = " + bookID);
+if (!auth) {
+    window.location.replace("login.html");
+}
 
-const name = "toto@gmail.com";
-const password = "toto237";
-const auth = btoa(`${name}:${password}`);
-
-async function loadBookDetails() {
+// 1. Fonction pour récupérer une image protégée par Auth
+async function fetchProtectedImage(url) {
     try {
-        const response = await fetch(`${CONFIG.API_URL}/books/get/byID/${bookID}`,{
-            method: 'GET',
-            headers: {
-                'Authorization': `Basic ${auth}`,
-            }
+        const response = await fetch(url, {
+            headers: { 'Authorization': `Basic ${auth}` }
         });
+        if (!response.ok) return "../ressources/images/fondMenu.jpg";
 
-        if (!response.ok) throw new Error("Erreur: "+response.status);
-
-        const book = await response.json();
-        displayBookDetails(book);
-    }catch(err) {
-        console.error("Erreur: ", err);
-        document.querySelector('.bookCard').innerHTML = `<p style = 'padding: 20px; color: red; font-size: x-large;'>Impossible de charger les détails du livre.</p>`;
+        const blob = await response.blob();
+        return URL.createObjectURL(blob);
+    } catch (err) {
+        return "../ressources/images/fondMenu.jpg";
     }
 }
 
-function displayBookDetails(book) {
+async function loadBookDetails() {
+    try {
+        const response = await fetch(`${CONFIG.API_URL}/books/get/byID/${bookID}`, {
+            method: 'GET',
+            headers: { 'Authorization': `Basic ${auth}` }
+        });
+
+        if (response.status === 401) {
+            localStorage.clear();
+            window.location.replace("login.html");
+            return;
+        }
+
+        if (!response.ok) throw new Error("Erreur: " + response.status);
+
+        const book = await response.json();
+        displayBookDetails(book);
+    } catch (err) {
+        console.error("Erreur: ", err);
+        const card = document.querySelector('.bookCard');
+        if (card) card.innerHTML = `<p style='color: red;'>Impossible de charger les détails.</p>`;
+    }
+}
+
+async function displayBookDetails(book) {
+    // Titre
     const pageTitle = document.querySelector('.titleFrame h1');
-    pageTitle.innerHTML = `<h1>${book.titre}</h1>`;
+    if (pageTitle) pageTitle.textContent = book.titre;
 
-    console.log("Book page url: ", book.urlCoverImage);
-
+    // Image avec gestion du 401
     const card = document.querySelector('.bookCard .card');
-    // On définit l'image : soit celle du livre, soit le fond par défaut
-    const cover = book.urlCoverImage ? `url(${book.urlCoverImage})` : `url("../ressources/images/fondMenu.jpg")`;
+    if (card) {
+        const imageUrl = book.urlCoverImage
+            ? await fetchProtectedImage(book.urlCoverImage)
+            : "../ressources/images/fondMenu.jpg";
 
-    card.style.backgroundImage = cover;
-    card.style.backgroundPosition = "center";
-    card.style.backgroundRepeat = "no-repeat";
-    card.style.backgroundSize = "cover";
+        card.style.backgroundImage = `url(${imageUrl})`;
+        card.style.backgroundPosition = "center";
+        card.style.backgroundSize = "cover";
+    }
 
+    // Infos
     const infoList = document.querySelector('.bookCard .groupInfo');
-    infoList.innerHTML = `
-        <li>
-            <p>Catégorie :</p>
-            <b>${book.category?.nom || 'N/A'}</b>
-        </li>
-        <li>
-            <p>Auteur :</p>
-            <b>${book.auteur}</b>
-        </li>
-        <li>
-            <p>Éditeur :</p>
-            <b>${book.editeur}</b>
-        </li>
-        <li>
-            <p>État du livre :</p>
-            <b>${book.etatLivre}</b>
-        </li>
-        <li>
-            <p>Disponibilité :</p>
-            <b>${book.estDisponible ? 'DISPONIBLE' : 'EMPRUNTE'}</b>
-        </li>
-    `;
+    if (infoList) {
+        infoList.innerHTML = `
+            <li><p>Catégorie :</p><b>${book.category?.nom || 'N/A'}</b></li>
+            <li><p>Auteur :</p><b>${book.auteur}</b></li>
+            <li><p>Éditeur :</p><b>${book.editeur}</b></li>
+            <li><p>État :</p><b>${book.etatLivre}</b></li>
+            <li><p>Disponibilité :</p><b>${book.estDisponible ? 'DISPONIBLE' : 'EMPRUNTÉ'}</b></li>
+        `;
+    }
+
+    // Mise à jour sidebar
+    const sidebarMail = document.querySelector('.profile .info p');
+    if (sidebarMail) sidebarMail.textContent = localStorage.getItem('userMail');
 }
 
 document.addEventListener('DOMContentLoaded', loadBookDetails);

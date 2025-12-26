@@ -1,20 +1,24 @@
-// bookHistory.js
-
 // 1. Fonction de chargement de l'historique
 async function loadBookHistory(bookTitle) {
-    const panelDown = document.querySelector('.panelDown'); // Cible directe
-    if (!panelDown) return;
+    const panelDown = document.querySelector('.panelDown');
+    const auth = localStorage.getItem('auth'); // Récupération dynamique
+
+    if (!panelDown || !auth) return;
 
     try {
         const response = await fetch(`http://localhost:8080/api/history/get/byBookTitle?bookTitle=${encodeURIComponent(bookTitle)}`, {
             headers: {
-                'Authorization': 'Basic ' + btoa('toto@gmail.com:toto237')
+                'Authorization': `Basic ${auth}`
             }
         });
 
-        const histories = await response.json();
+        if (response.status === 401) {
+            localStorage.clear();
+            window.location.replace("login.html");
+            return;
+        }
 
-        // Vider la liste avant d'ajouter
+        const histories = await response.json();
         panelDown.innerHTML = '';
 
         if (histories.length === 0) {
@@ -23,9 +27,8 @@ async function loadBookHistory(bookTitle) {
         }
 
         histories.forEach(h => {
-            // Mapping strict sur ton JSON Postman
-            const type = h.typeOpperation; // 2 'p'
-            const etat = h.etatOperation;  // 1 'p'
+            const type = h.typeOpperation;
+            const etat = h.etatOperation;
             const dateStr = h.dateTime ? new Date(h.dateTime).toLocaleString('fr-FR') : 'Date inconnue';
 
             const li = document.createElement('li');
@@ -47,14 +50,21 @@ async function loadBookHistory(bookTitle) {
 
 // 2. Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', async () => {
+    const auth = localStorage.getItem('auth');
     const params = new URLSearchParams(window.location.search);
     const bookID = params.get("id");
+
+    // Sécurité : si pas d'auth, redirection immédiate
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
 
     if (!bookID) return;
 
     try {
-        // Récupération des détails du livre (pour avoir le titre)
-        const response = await fetch(`${CONFIG.API_URL}/books/get/byID/${bookID}`, {
+        // Note : Utilisation de l'URL propre avec auth dynamique
+        const response = await fetch(`http://localhost:8080/api/books/get/byID/${bookID}`, {
             method: 'GET',
             headers: { 'Authorization': `Basic ${auth}` }
         });
@@ -63,11 +73,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const book = await response.json();
 
-        // Affichage des détails (ta fonction existante)
+        // Affichage des détails
         displayBookDetails(book);
 
-        // CHAÎNAGE SOLID : Une fois le livre chargé, on charge son historique
-        await loadBookHistory(book.titre);
+        // Chargement de l'historique avec le titre récupéré (ex: book.titre ou book.title selon ton API)
+        await loadBookHistory(book.titre || book.bookTitle);
 
     } catch (err) {
         console.error("Erreur: ", err);

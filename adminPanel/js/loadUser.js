@@ -1,6 +1,31 @@
+async function loadSideProfil(auth, userMail) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+            headers: {'Authorization': `Basic ${auth}`}
+        });
+        if (!response.ok) return;
+        const admin = await response.json();
+
+        const sidebarName = document.querySelector('.profile .info h1');
+        const sidebarMail = document.querySelector('.profile .info p');
+        if (sidebarName) sidebarName.textContent = admin.name;
+        if (sidebarMail) sidebarMail.textContent = admin.mail;
+
+        localStorage.setItem('userId', admin.id);
+    } catch (e) { console.error("Sidebar error:", e); }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const panelDown = document.querySelector('.panelDown');
-    const auth = btoa('toto@gmail.com:toto237');
+    const auth = localStorage.getItem('auth');
+    const userMail = localStorage.getItem('userMail');
+
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
+
+    await loadSideProfil(auth, userMail);
 
     try {
         // 1. Récupérer TOUT l'historique via history/get/All
