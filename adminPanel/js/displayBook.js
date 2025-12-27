@@ -2,11 +2,13 @@ async function fetchAndDisplayBooks() {
     const container = document.querySelector('.panel .panelDown');
     console.log(container)
 
-    // Identifiants de test (ceux que tu as mis dans Postman)
-    const name = "toto@gmail.com";
-    const password = "toto237";
-    // Encodage en Base64 pour le header Authorization
-    const auth = btoa(`${name}:${password}`);
+    const auth = localStorage.getItem('auth');
+
+    // 1. Sécurité : Si pas d'auth, on redirige
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
 
     try {
         const response = await fetch(`${CONFIG.API_URL}/books/get/All`, {
@@ -21,7 +23,7 @@ async function fetchAndDisplayBooks() {
         const books = await response.json();
         container.innerHTML = "";
         if (books.length === 0){
-            container.innerHTML = `<p style='padding:20px; color:red; font-size: x-large;'>No Book yet.</p>`;
+            container.innerHTML = `<p style='padding:20px; color:red; font-size: x-large;'>No Book yet...</p>`;
         }
 
         books.forEach(book => {

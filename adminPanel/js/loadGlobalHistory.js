@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const panelDown = document.querySelector('.panelDown');
-    const auth = btoa('toto@gmail.com:toto237');
+    const auth = localStorage.getItem('auth');
+
+    // 1. Sécurité : Si pas d'auth, on redirige
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
 
     try {
         // 1. On récupère les users pour mapper le Nom -> ID (nécessaire pour le lien dynamique)

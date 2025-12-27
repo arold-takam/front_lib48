@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const panelDown = document.querySelector('.panelDown');
-    const auth = btoa('toto@gmail.com:toto237');
-    const gerantID = 1; // ID statique ou récupéré du localStorage
+    const auth = localStorage.getItem('auth');
+    const gerantID = localStorage.getItem('userId');
+
+    // 1. Sécurité : Si pas d'auth, on redirige
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
 
     try {
         // 1. Récupération de tous les retours via le controller

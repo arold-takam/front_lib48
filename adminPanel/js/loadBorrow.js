@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const borrowContainer = document.querySelector('.borrowLine');
-    const auth = btoa('toto@gmail.com:toto237');
+    const auth = localStorage.getItem('auth');
+
+    // 1. Sécurité : Si pas d'auth, on redirige
+    if (!auth) {
+        window.location.replace("login.html");
+        return;
+    }
 
     // Idée réaliste : on récupère l'ID du gérant ou de l'abonne connecté
     const currentUserId = 1;
