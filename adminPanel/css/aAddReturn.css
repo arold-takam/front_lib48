@@ -309,6 +309,40 @@ body {
                     }
                 }
 
+                & .put {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    height: 4rem;
+
+                    & label {
+                        position: absolute;
+                        top: -.5rem;
+                        left: 1rem;
+                        width: max-content;
+                        background-color: var(--whiteColor);
+                        font-size: large;
+                        padding: 0 .5rem;
+                    }
+
+                    & input {
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        background-color: var(--whiteColor);
+                        border: 1px solid var(--darkGreyColor);
+                        border-radius: .5rem;
+                        color: var(--mainColor);
+                        font-size: large;
+                        font-weight: 570;
+                        outline: none;
+                        padding: 1rem 2rem;
+                    }
+                }
+
                 & .ctaZone{
                     display: flex;
                     flex-direction: row;
