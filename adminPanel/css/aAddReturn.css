@@ -150,14 +150,14 @@ body {
 
             & h2{
                 color: var(--mainColor);
-                font-size: xx-large;
+                font-size: x-large;
             }
 
             & .navLink{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 2rem;
+                gap: .5rem;
                 width: 100%;
                 list-style: none;
 
@@ -258,229 +258,97 @@ body {
             }
         }
 
-        & .stat{
-            display: flex;
-            align-items: center;
-            width: 100%;
-
-            & .records{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 1rem;
-                width: 100%;
-                list-style: none;
-
-                & li{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 2rem;
-                    width: 100%;
-                    background-color: var(--secondaryColor);
-                    border-radius: 1rem;
-                    color: var(--whiteColor);
-                    font-size: x-large;
-                    padding: 1rem;
-
-                    & b{
-                        font-size: x-large;
-                    }
-
-                    & p{
-                        font-size: large;
-                    }
-                }
-            }
-        }
-
-        & .panelActivity{
+        & .fieldForm{
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            justify-content: center;
             width: 100%;
+            height: calc(100% - 6rem);
 
-            & .titleActivity{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-
-                & .left{
-                    display: flex;
-                    align-items: center;
-                    gap: .5rem;
-                    color: var(--mainColor);
-
-                    & .listIcon{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 4rem;
-                        aspect-ratio: 4/4;
-                        background-color: var(--mainColor);
-                        border-radius: 50%;
-
-                        & img{
-                            width: 80%;
-                            aspect-ratio: 4/4;
-                            object-fit: cover;
-                        }
-                    }
-
-                    & h2{
-                        font-size: x-large;
-                    }
-                }
-
-                & .searchZone{
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 28rem;
-                    height: 3rem;
-                    background-color: var(--whiteColor);
-                    border: 2px solid var(--mainColor);
-                    border-radius: 2rem;
-                    overflow: hidden;
-
-                    & input{
-                        width: 80%;
-                        height: 100%;
-                        border: none;
-                        background-color: var(--whiteColor);
-                        font-size: large;
-                        outline: none;
-                        z-index: 3;
-                        padding: 0 1rem;
-                    }
-
-                    & .go{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 20%;
-                        height: 100%;
-                        background-color: var(--mainColor);
-                        border: none;
-                        cursor: pointer;
-
-                        & img{
-                            height: 80%;
-                            aspect-ratio: 4/4;
-                        }
-                    }
-                }
-
-                & .addReturnCta{
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    background-color: var(--secondaryColor);
-                    border-radius: 2rem;
-                    color: var(--mainColor);
-                    font-size: larger;
-                    font-weight: bold;
-                    padding: 1rem 2rem;
-                    text-decoration: none;
-                    transition: all .3s ease;
-
-                    &:hover{
-                        background-color: var(--mainColor);
-                        color: var(--whiteColor);
-                    }
-                }
-            }
-
-            & .panel{
+            & .returnForm{
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                width: 100%;
+                align-items: center;
+                gap: 5rem;
+                width: 48rem;
+                padding: 2rem;
 
-                & .panelUp{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    width: 100%;
-                    list-style: none;
-
-                    & li{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 1rem;
-                        width: calc(100% / 4);
-                        color: var(--mainColor);
-                        font-size: larger;
-                        font-weight: bold;
-                        border-bottom: 2px solid var(--mainColor);
-                        padding: .5rem;
-
-                        & p{
-                            font-size: large;
-                        }
-
-                        & img{
-                            width: 1.5rem;
-                            aspect-ratio: 16/9;
-                        }
-                    }
-                }
-
-                & .panelDown{
+                & .choice{
+                    position: relative;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    justify-content: flex-start;
                     gap: 1rem;
                     width: 100%;
-                    height: 32rem;
-                    list-style: none;
-                    overflow: hidden scroll;
-                    scroll-behavior: smooth;
-                    padding: .5rem;
+                    height: 4rem;
 
-                    & .returnLine{
+                    & label{
+                        width: max-content;
+                        background-color: var(--whiteColor);
+                        font-size: large;
+                    }
+
+                    & select{
                         display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
+                        align-items: center;
                         width: 100%;
+                        height: 100%;
+                        background-color: var(--whiteColor);
+                        border: 1px solid var(--darkGreyColor);
+                        border-radius: .5rem;
+                        color: var(--mainColor);
+                        font-size: large;
+                        font-weight: 570;
+                        outline: none;
+                        padding: 1rem 2rem;
 
-                        & .infoLine{
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: 1rem;
-                            width: 100%;
-                            height: 3rem;
-                            list-style: none;
+                        & option{
+                            font-size: large;
+                        }
+                    }
+                }
 
-                            & li{
-                                display: flex;
-                                align-items: center;
-                                width: calc(100% / 4);
-                                height: 100%;
-                                background-color: white;
-                                box-shadow: 0 0 2px rgba(0,80,255,0.48);
-                                border-radius: .5rem;
-                                padding: .5rem;
+                & .ctaZone{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4rem;
+                    width: 100%;
 
-                                & a{
-                                    color: var(--mainColor);
-                                    font-size: large;
-                                    font-weight: bold;
-                                    text-decoration: none;
-                                }
+                    & a, button{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 24rem;
+                        border-radius: 2rem;
+                        font-size: large;
+                        padding: 1rem 0;
+                        text-decoration: none;
+                    }
+                    & .go{
+                        background-color: var(--mainColor);
+                        border: none;
+                        color: var(--whiteColor);
+                        transition: all .5s ease;
 
-                                &:nth-child(2){
-                                    font-weight: bold;
-                                }
-                            }
+                        &:hover{
+                            border: 1px solid var(--secondaryColor);
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                    & .back{
+                        background-color: var(--whiteColor);
+                        border: 2px solid var(--secondaryColor);
+                        color: var(--secondaryColor);
+                        transition: all .3s ease;
+
+                        &:hover{
+                            border-color: var(--mainColor);
+                            color: var(--mainColor);
+                            font-weight: bold;
                         }
                     }
                 }
