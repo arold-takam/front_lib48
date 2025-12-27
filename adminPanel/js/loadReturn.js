@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 2. Boucle asynchrone pour traiter chaque retour
         for (const r of returns) {
-            console.log(r);
             let bookId = "#";
             const titreLivre = r.livreName; // On suppose que le DTO contient le titre
 
