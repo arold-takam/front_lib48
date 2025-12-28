@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categoryName = urlParams.get('name');
 
     const titleH1 = document.querySelector('.hero .top h1');
+    const detailsP = document.querySelector('.details p');
     const bookList = document.querySelector('.books');
 
     if (!categoryName) {
@@ -13,9 +14,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    titleH1.textContent = categoryName;
+    /** 1. Charger les détails de la catégorie (Titre et Description) */
+    async function loadCategoryInfo() {
+        try {
+            const response = await fetch(`http://localhost:8080/api/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
+                headers: { 'Authorization': authHeader }
+            });
+            if (response.ok) {
+                const category = await response.json();
+                titleH1.textContent = category.nom;
+                detailsP.textContent = category.description || "Aucune description disponible pour cette catégorie.";
+            }
+        } catch (e) { console.error("Erreur détails catégorie:", e); }
+    }
 
-    /** Récupération sécurisée des images */
+    /** 2. Récupération sécurisée des images */
     async function getSecureImage(id) {
         try {
             const res = await fetch(`http://localhost:8080/api/books/${id}/cover-image`, {
@@ -26,15 +39,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         return "../ressources/images/fondMenu.jpg";
     }
 
-    /** Charger les livres de cette catégorie */
+    /** 3. Charger les livres de cette catégorie */
     async function loadCategoryBooks() {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
+            const response = await fetch(`http://localhost:8080/api/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
                 headers: { 'Authorization': authHeader }
             });
 
             if (response.ok) {
-                const books = await response.json();
+                const category = await response.json();
+                const bookCateList = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${category.nom}`, {
+                    headers: { 'Authorization': authHeader }
+                });
+
+                const books = await bookCateList.json();
+
                 bookList.innerHTML = '';
 
                 for (const book of books) {
@@ -53,8 +72,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     bookList.appendChild(li);
                 }
             }
-        } catch (e) { console.error(e); }
+        } catch (e) { console.error("Erreur livres catégorie:", e); }
     }
 
+    // Lancement des deux chargements
+    loadCategoryInfo();
     loadCategoryBooks();
 });
