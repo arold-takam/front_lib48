@@ -126,7 +126,7 @@ body {
 
                     & p, & b{
                         width: 100%;
-                        font-size: xxx-large;
+                        font-size: xx-large;
                     }
                 }
             }
@@ -153,7 +153,7 @@ body {
                 transition: all 1s ease;
 
                 & p{
-                    font-size: xxx-large;
+                    font-size: xx-large;
                 }
             }
             & .notify, & .borrows{
@@ -181,7 +181,7 @@ body {
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                font-size: xxx-large;
+                font-size: xx-large;
             }
 
             & .switch{
@@ -330,7 +330,7 @@ body {
 
                 & p{
                     color: var(--whiteColor);
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     text-align: center;
                 }
 
@@ -343,7 +343,7 @@ body {
                     background-color: var(--whiteColor);
                     border-radius: 8rem;
                     color: var(--mainColor);
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     font-weight: bold;
                     text-decoration: none;
                 }
@@ -378,7 +378,7 @@ body {
                         gap: .5rem;
 
                         & b, & p{
-                            font-size: xxx-large;
+                            font-size: xx-large;
                         }
                     }
                 }
@@ -395,7 +395,7 @@ body {
                     }
 
                     & p{
-                        font-size: xxx-large;
+                        font-size: xx-large;
                     }
                 }
 
@@ -514,6 +514,13 @@ body {
                         }
                     }
                 }
+
+                & .pass{
+
+                    & p{
+                        font-size: large;
+                    }
+                }
             }
         }
 
@@ -546,7 +553,7 @@ body {
                     gap: .5rem;
 
                     & label{
-                        font-size: xxx-large;
+                        font-size: xx-large;
                         font-weight: bold;
                     }
 
@@ -560,7 +567,7 @@ body {
                         border: 2px solid var(--mainColor);
                         border-radius: 1rem;
                         color: var(--mainColor);
-                        font-size: xxx-large;
+                        font-size: xx-large;
                     }
 
                     & .ok{
@@ -574,7 +581,7 @@ body {
                         border-radius: .5rem;
                         color: var(--whiteColor);
                         cursor: pointer;
-                        font-size: xxx-large;
+                        font-size: xx-large;
                         font-weight: bold;
                     }
                 }
@@ -584,6 +591,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
                 gap: 2rem;
 
                 & li{
@@ -591,6 +599,7 @@ body {
                     flex-direction: column;
                     align-items: center;
                     gap: 1rem;
+                    width: 100%;
                     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(6, 89, 255, 0.2) 100%);
                     border-radius: 2rem;
                     padding: 2rem;
@@ -603,7 +612,7 @@ body {
 
                         & h2{
                             color: var(--mainColor);
-                            font-size: xxx-large;
+                            font-size: xx-large;
                         }
 
                         & b{
@@ -628,7 +637,7 @@ body {
                             display: flex;
                             align-items: center;
                             gap: 1rem;
-                            font-size: xxx-large;
+                            font-size: xx-large;
                         }
                     }
 
@@ -642,7 +651,7 @@ body {
                             display: flex;
                             align-items: center;
                             gap: .5rem;
-                            font-size: xxx-large;
+                            font-size: xx-large;
                         }
                     }
                 }
