@@ -7,36 +7,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     const filterForm = document.querySelector('.story .filter');
     const filterSelect = document.querySelector('#type');
 
-    /** 1. Formater Date et Heure */
+    /** 1. Formater Date et Heure à partir du champ dateTime du backend */
     function formatDateTime(isoString) {
         const dateObj = new Date(isoString);
         return {
+            // "2025-12-27" -> "27/12/2025"
             date: dateObj.toLocaleDateString('fr-FR'),
-            time: dateObj.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(':', 'h')
+            // "17:02:24" -> "17h02"
+            time: dateObj.toLocaleTimeString('fr-FR', {
+                hour: '2-digit',
+                minute: '2-digit'
+            }).replace(':', 'h')
         };
     }
 
-    /** 2. Créer l'élément HTML d'une story */
+    /** 2. Créer l'élément HTML avec tes vrais noms de champs */
     function createStoryItem(item) {
-        const { date, time } = formatDateTime(item.dateOperation || new Date());
+        const { date, time } = formatDateTime(item.dateTime); // Utilise dateTime ici
         const li = document.createElement('li');
 
-        // Ajout d'un attribut data pour le filtrage
         li.setAttribute('data-etat', item.etatOperation);
 
         li.innerHTML = `
-            <div class="top">
-                <h2>${item.typeOpperation.replace('_', ' ')}</h2>
-                <b class="${item.etatOperation.toLowerCase()}">${item.etatOperation}</b>
-            </div>
-            <div class="middle">
-                <p>${item.details}</p>
-                <span>Pour: <b>${item.bookTitle || "N/A"}</b></span>
-            </div>
-            <div class="bottom">
-                <div class="date"><b>Le:</b><p>${date}</p></div>
-                <div class="time"><b>A:</b><p>${time}</p></div>
-            </div>`;
+        <div class="top">
+            <h2>${item.typeOpperation.replace(/_/g, ' ')}</h2>
+            <b class="${item.etatOperation.toLowerCase()}">${item.etatOperation}</b>
+        </div>
+        <div class="middle">
+            <p>${item.details}</p> 
+            <span>Pour: <b>${item.bookTitle}</b></span>
+        </div>
+        <div class="bottom">
+            <div class="date"><b>Le:</b><p>${date}</p></div>
+            <div class="time"><b>A:</b><p>${time}</p></div>
+        </div>`;
         return li;
     }
 

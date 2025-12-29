@@ -22,6 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Redirection automatique après 500ms
     setTimeout(() => {
         // Redirection vers le suivi des emprunts
-        window.location.href = "./borrowTrack.html";
+        window.location.href = "./profile.html";
     }, 500);
 });
