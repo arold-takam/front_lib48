@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. CONFIGURATION (Identifiants de test pour l'abonné)
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
+    // 1. Récupération dynamique du Token (Pragmatique : redirection si absent)
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
 
     // 2. CIBLES DOM
     const newBooksList = document.querySelector('.new .screen ul');
@@ -9,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categoryList = document.querySelector('.categories .screen ul');
 
     /**
-     * Récupère l'image en Blob avec Authentification et gère le repli (fallback)
+     * Récupère l'image en Blob avec Authentification dynamique
      */
     async function getSecureImage(bookId) {
         try {
@@ -23,7 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error(`Erreur image livre ${bookId}:`, error);
         }
-        // Retourne l'image par défaut si le fetch échoue ou si l'image n'existe pas
         return "../ressources/images/fondMenu.jpg";
     }
 
@@ -48,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /**
-     * Charge tous les livres et les affiche intégralement dans les deux sections
+     * Charge tous les livres
      */
     async function loadBooks() {
         try {
@@ -56,19 +61,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                 headers: { 'Authorization': authHeader }
             });
 
+            // Réalisme : Si le token est invalide (401), on renvoie au login
+            if (response.status === 401) {
+                sessionStorage.clear();
+                window.location.href = "./login.html";
+                return;
+            }
+
             if (response.ok) {
                 const books = await response.json();
-
                 newBooksList.innerHTML = '';
                 hotBooksList.innerHTML = '';
 
                 for (const book of books) {
                     const bookElement = await createBookHTML(book);
-
-                    // Ajout à la section "Nouvelles Sorties"
                     newBooksList.appendChild(bookElement);
-
-                    // Ajout à la section "Tendances" (clone pour duplication physique)
+                    // On clone pour la section Tendances
                     hotBooksList.appendChild(bookElement.cloneNode(true));
                 }
             }
@@ -78,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /**
-     * Charge toutes les catégories et les affiche
+     * Charge toutes les catégories
      */
     async function loadCategories() {
         try {
@@ -89,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (response.ok) {
                 const categories = await response.json();
                 categoryList.innerHTML = '';
-
                 categories.forEach(cat => {
                     const li = document.createElement('li');
                     li.innerHTML = `
@@ -100,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             }
         } catch (error) {
-            console.error("Erreur chargement catégories:", error);
+            console.error("Erreur catégories:", error);
         }
     }
 

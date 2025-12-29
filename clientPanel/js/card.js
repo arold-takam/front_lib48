@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
-    const ABONNE_ID = 2;
+    // 1. Récupération dynamique du Token et du Mail
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+    const USER_MAIL = sessionStorage.getItem('userMail') || localStorage.getItem('userMail');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
+    let currentAbonneID = null;
 
     const subscribeZone = document.querySelector('.subscribeZone');
     const cardItem = document.querySelector('.cardItem');
@@ -13,54 +21,63 @@ document.addEventListener('DOMContentLoaded', async () => {
     const delBtn = document.querySelector('.del');
     const loadBtn = document.querySelector('.load');
 
-    /** 1. Charger les données de la carte */
-    async function loadCardInfo() {
+    /** 2. Récupérer l'ID de l'abonné via son mail */
+    async function getAbonneID() {
         try {
-            const response = await fetch(`http://localhost:8080/api/user/get/card/${ABONNE_ID}`, {
+            const res = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+                headers: { 'Authorization': authHeader }
+            });
+            if (res.ok) {
+                const user = await res.json();
+                currentAbonneID = user.id;
+                loadCardInfo(); // Une fois l'ID obtenu, on charge la carte
+            }
+        } catch (e) { console.error("Erreur ID utilisateur:", e); }
+    }
+
+    /** 3. Charger les données de la carte */
+    async function loadCardInfo() {
+        if (!currentAbonneID) return;
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/user/get/card/${currentAbonneID}`, {
                 headers: { 'Authorization': authHeader }
             });
 
             if (response.ok) {
                 const card = await response.json();
-
-                // Affichage du mode "Carte Active"
                 subscribeZone.style.display = 'none';
                 cardItem.style.display = 'flex';
 
-                // Remplissage des données
-                typeSpan.textContent = card.typeAbonnement; // ex: GOLD, PREMIUM
-                numP.textContent = card.id;
+                typeSpan.textContent = card.typeAbonnement;
+                numP.textContent = card.cardNumber;
                 dayDiv.textContent = `${card.duree} jours`;
 
-                loadBtn.href = `./subScribe.html?id=${ABONNE_ID}`;
-
-            } else if (response.status === 404) {
-                // Affichage du mode "Pas d'abonnement"
+                loadBtn.href = `./subScribe.html?id=${currentAbonneID}`;
+            } else {
                 subscribeZone.style.display = 'flex';
                 cardItem.style.display = 'none';
             }
-        } catch (e) {
-            console.error("Erreur chargement carte:", e);
-        }
+        } catch (e) { console.error("Erreur carte:", e); }
     }
 
-    /** 2. Supprimer la carte (Action Réaliste) */
+    /** 4. Supprimer la carte */
     delBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (confirm("Voulez-vous vraiment supprimer votre carte ?")) {
             try {
-                const res = await fetch(`http://localhost:8080/api/user/delete/card/${ABONNE_ID}`, {
+                const res = await fetch(`http://localhost:8080/api/user/delete/card/${currentAbonneID}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': authHeader }
                 });
 
                 if (res.ok) {
-                    alert("Carte supprimée avec succès.");
-                    loadCardInfo(); // Rafraîchit l'affichage vers "subscribeZone"
+                    alert("Carte supprimée.");
+                    loadCardInfo();
                 }
             } catch (e) { console.error("Erreur suppression:", e); }
         }
     });
 
-    loadCardInfo();
+    getAbonneID();
 });

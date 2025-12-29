@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
-    const USER_ID = 2;
+    // 1. Récupération dynamique de la session
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+    const USER_MAIL = sessionStorage.getItem('userMail') || localStorage.getItem('userMail');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
+    let currentUserID = null; // Sera récupéré dynamiquement
 
     const form = document.querySelector('.inscription');
     const nameInput = document.querySelector('#name');
@@ -9,21 +17,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     const passInput = document.querySelector('#pass');
     const seeBtn = document.querySelector('.see');
 
-    /** 1. Charger les infos actuelles (Pragmatisme : ne pas faire deviner l'user) */
+    /** 1. Charger les infos actuelles (Dynamisation de l'ID) */
     async function loadCurrentInfo() {
         try {
-            const res = await fetch(`http://localhost:8080/api/user/get/${USER_ID}`, {
+            // On récupère d'abord l'utilisateur par son mail de session
+            const userRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
-            if (res.ok) {
-                const user = await res.json();
+
+            if (userRes.ok) {
+                const user = await userRes.json();
+                currentUserID = user.id; // On stocke l'ID réel pour l'update plus tard
+
+                // Remplissage des inputs avec ta logique existante
                 nameInput.value = user.name;
                 mailInput.value = user.mail;
             }
         } catch (e) { console.error("Erreur chargement profil:", e); }
     }
 
-    /** 2. Gestion de la visibilité du mot de passe */
+    /** 2. Gestion de la visibilité (Ta logique intacte) */
     seeBtn.addEventListener('click', () => {
         const isPass = passInput.type === 'password';
         passInput.type = isPass ? 'text' : 'password';
@@ -32,31 +45,28 @@ document.addEventListener('DOMContentLoaded', async () => {
             : "../ressources/images/eyeOpen.png";
     });
 
-    /** 3. Soumission du formulaire */
+    /** 3. Soumission du formulaire (Ta logique de DTO préservée) */
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Sécurité front-end pour Name et Mail (ton backend ne vérifie pas le vide ici)
         if (!nameInput.value.trim() || !mailInput.value.trim()) {
             alert("Le nom et l'email sont obligatoires.");
             return;
         }
 
-        // Construction du DTO
         const updateDTO = {
             name: nameInput.value.trim(),
             mail: mailInput.value.trim(),
             password: passInput.value.trim() === "" ? "" : passInput.value
         };
 
-        // Ajout du password UNIQUEMENT s'il n'est pas vide
-        // Ton backend gère le .isBlank(), donc "" ou null conservera l'ancien
         if (passInput.value.trim() !== "") {
             updateDTO.password = passInput.value;
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/user/update/${USER_ID}?roleName=ABONNE`, {
+            // Utilisation de l'ID dynamique récupéré au chargement
+            const response = await fetch(`http://localhost:8080/api/user/update/${currentUserID}?roleName=ABONNE`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': authHeader,
@@ -66,8 +76,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (response.ok) {
-                alert("Compte modifié avec succes !");
+                // Mise à jour du mail en session au cas où l'utilisateur l'a changé
+                sessionStorage.setItem('userMail', updateDTO.mail);
 
+                alert("Compte modifié avec succès !");
                 window.location.href = "./profile.html";
             } else {
                 const errorText = await response.text();

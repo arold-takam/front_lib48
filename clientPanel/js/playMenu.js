@@ -1,61 +1,79 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
-    const USER_ID = 2;
+    // 1. Sécurité Dynamique
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+    const USER_MAIL = sessionStorage.getItem('userMail') || localStorage.getItem('userMail');
 
+    if (!AUTH_TOKEN) return; // Le menu ne se charge pas si pas de token
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
+
+    // Sélecteurs
     const menuProfileLink = document.querySelector('.profile');
     const initialP = menuProfileLink.querySelector('.initial p');
     const nameP = menuProfileLink.querySelector('.info p');
     const emailB = menuProfileLink.querySelector('.info b');
+    const newsBadge = document.querySelector('.news b');
+    const borrowBadge = document.querySelector('.borrows b');
 
-    async function loadMenuData() {
+    /** 2. Charger les infos Utilisateur et Initiales */
+    async function loadUserMenu() {
         try {
-            const res = await fetch(`http://localhost:8080/api/user/get/${USER_ID}`, {
+            const res = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
 
             if (res.ok) {
                 const user = await res.json();
-
-                // 1. Remplissage du Nom et Email
                 nameP.textContent = user.name;
                 emailB.textContent = user.mail;
 
-                // 2. Logique des initiales (Règle : 2 lettres obligatoires)
+                // Logique des initiales (Identique à ta version)
                 const parts = user.name.trim().split(/\s+/).filter(p => p.length > 0);
                 let initials = "";
-
                 if (parts.length === 1) {
-                    // Un seul nom -> on double la lettre (ex: "Tata" -> "TT")
-                    const char = parts[0].charAt(0);
-                    initials = char + char;
+                    initials = parts[0].charAt(0).repeat(2);
                 } else if (parts.length >= 2) {
-                    const firstChar = parts[0].charAt(0);
-                    const secondChar = parts[1].charAt(0);
-
-                    if (firstChar.toUpperCase() === secondChar.toUpperCase()) {
-                        // Initiales identiques -> on double (ex: "Thomas Traoré" -> "TT")
-                        initials = firstChar + firstChar;
-                    } else {
-                        // Deux initiales différentes
-                        initials = firstChar + secondChar;
-                    }
+                    const [p1, p2] = [parts[0].charAt(0), parts[1].charAt(0)];
+                    initials = (p1.toUpperCase() === p2.toUpperCase()) ? p1 + p1 : p1 + p2;
                 }
-
                 initialP.textContent = initials.toUpperCase();
+
+                // Charger les compteurs une fois l'ID récupéré
+                loadStats(user.id);
             }
-        } catch (e) {
-            console.error("Erreur chargement menu:", e);
-        }
+        } catch (e) { console.error("Erreur menu:", e); }
     }
 
-    loadMenuData();
+    /** 3. Mappage des badges (+25 News, +5 Emprunts) */
+    async function loadStats(userId) {
+        try {
+            // Emprunts : on compte la taille du tableau retourné
+            const resBorrow = await fetch(`http://localhost:8080/api/borrowBook/get/all/byAbonneID/${userId}`, {
+                headers: { 'Authorization': authHeader }
+            });
+            if (resBorrow.ok) {
+                const borrows = await resBorrow.json();
+                if(borrowBadge) borrowBadge.textContent = `+${borrows.length} Emprunts`;
+            }
 
-    // Ton code de comportement existant
+            // News : on compte tous les livres (ou les 10 derniers selon ton choix)
+            const resBooks = await fetch(`http://localhost:8080/api/books/get/All`, {
+                headers: { 'Authorization': authHeader }
+            });
+            if (resBooks.ok) {
+                const books = await resBooks.json();
+                if(newsBadge) newsBadge.textContent = `+${books.length} NEWS`;
+            }
+        } catch (e) { console.error("Erreur stats:", e); }
+    }
+
+    loadUserMenu();
+
+    // --- Gestion de l'ouverture/fermeture (Ta logique intacte) ---
     const menuBtn = document.querySelector('.openMenu');
     const menu = document.querySelector('.menu');
     const menuClose = document.querySelector('.close');
 
-    menuBtn.addEventListener('click', () => menu.classList.add('active'));
-    menuClose.addEventListener('click', () => menu.classList.remove('active'));
+    if(menuBtn) menuBtn.addEventListener('click', () => menu.classList.add('active'));
+    if(menuClose) menuClose.addEventListener('click', () => menu.classList.remove('active'));
 });

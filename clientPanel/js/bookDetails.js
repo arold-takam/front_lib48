@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
+    // 1. Récupération dynamique du Token
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+
+    // Garde de sécurité : si pas de token, retour au login
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
 
     // 1. Récupérer l'ID du livre dans l'URL
     const urlParams = new URLSearchParams(window.location.search);

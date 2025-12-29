@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
+    // 1. Récupération dynamique du Token
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
 
     const urlParams = new URLSearchParams(window.location.search);
     const categoryName = urlParams.get('name');
@@ -14,12 +21,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    /** 1. Charger les détails de la catégorie (Titre et Description) */
+    /** 1. Charger les détails de la catégorie */
     async function loadCategoryInfo() {
         try {
             const response = await fetch(`http://localhost:8080/api/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
                 headers: { 'Authorization': authHeader }
             });
+
+            if (response.status === 401) {
+                window.location.href = "./login.html";
+                return;
+            }
+
             if (response.ok) {
                 const category = await response.json();
                 titleH1.textContent = category.nom;
@@ -42,18 +55,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 3. Charger les livres de cette catégorie */
     async function loadCategoryBooks() {
         try {
-            const response = await fetch(`http://localhost:8080/api/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
+            // Utilisation du authHeader dynamique ici aussi
+            const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
                 headers: { 'Authorization': authHeader }
             });
 
             if (response.ok) {
-                const category = await response.json();
-                const bookCateList = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${category.nom}`, {
-                    headers: { 'Authorization': authHeader }
-                });
-
-                const books = await bookCateList.json();
-
+                const books = await response.json();
                 bookList.innerHTML = '';
 
                 for (const book of books) {
@@ -75,7 +83,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (e) { console.error("Erreur livres catégorie:", e); }
     }
 
-    // Lancement des deux chargements
     loadCategoryInfo();
     loadCategoryBooks();
 });

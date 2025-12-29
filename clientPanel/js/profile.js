@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
-    const USER_ID = 2; // ID de l'abonné connecté
+    // 1. Récupération dynamique de la session
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+    const USER_MAIL = sessionStorage.getItem('userMail') || localStorage.getItem('userMail');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
 
     const infoList = document.querySelector('.infoline');
     const initialDiv = document.querySelector('.infoProfile .initial');
@@ -10,10 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let realPassword = "";
 
-    /** 1. Charger les informations utilisateur */
+    /** 2. Charger les informations utilisateur via le Mail stocké */
     async function loadUserProfile() {
         try {
-            const response = await fetch(`http://localhost:8080/api/user/get/${USER_ID}`, {
+            // Pragmatique : on récupère l'utilisateur par son mail de session
+            const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -25,33 +33,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 infoList.querySelector('li:nth-child(2) p').textContent = user.mail;
                 infoList.querySelector('li:nth-child(4) p').textContent = user.roleName;
 
-                // 2. Logique des initiales (Placée ICI, après réception de 'user')
-                // Logique des initiales personnalisée
+                // 2. Ta Logique des initiales (Intacte)
                 const parts = user.name.trim().split(/\s+/).filter(p => p.length > 0);
-
                 let finalInitials = "";
 
                 if (parts.length === 1) {
-                    // Cas 1 : Un seul nom -> on double la première lettre
                     const char = parts[0].charAt(0);
                     finalInitials = char + char;
                 } else if (parts.length >= 2) {
                     const firstChar = parts[0].charAt(0);
                     const secondChar = parts[1].charAt(0);
-
-                    if (firstChar.toUpperCase() === secondChar.toUpperCase()) {
-                        // Cas 2 : Deux noms avec la même initiale -> on double
-                        finalInitials = firstChar + firstChar;
-                    } else {
-                        // Cas classique : Deux initiales différentes
-                        finalInitials = firstChar + secondChar;
-                    }
+                    finalInitials = (firstChar.toUpperCase() === secondChar.toUpperCase())
+                        ? firstChar + firstChar
+                        : firstChar + secondChar;
                 }
-
                 initialDiv.textContent = finalInitials.toUpperCase();
-
-// Debug pour confirmer
-                console.log(`Nom: ${user.name} -> Initiales: ${finalInitials.toUpperCase()}`);
 
                 // 3. Gestion du mot de passe
                 realPassword = user.password || "********";
@@ -61,11 +57,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    /** 2. Gestion de la visibilité du mot de passe */
+    /** 3. Gestion de la visibilité (Ta logique intacte) */
     seeBtn.addEventListener('click', () => {
         if (passP.textContent === "********") {
             passP.textContent = realPassword;
-            seeBtn.querySelector('img').src = "../ressources/images/eyeClosed.png"; // Change l'icône
+            seeBtn.querySelector('img').src = "../ressources/images/eyeClosed.png";
         } else {
             passP.textContent = "********";
             seeBtn.querySelector('img').src = "../ressources/images/eyeOpen.png";

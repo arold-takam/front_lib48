@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const credentials = btoa("tata@gmail.com:1234");
-    const authHeader = `Basic ${credentials}`;
-    const ABONNE_ID = 2;
+    // 1. Récupération dynamique du Token et du Mail
+    const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+    const USER_MAIL = sessionStorage.getItem('userMail') || localStorage.getItem('userMail');
+
+    if (!AUTH_TOKEN) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    const authHeader = `Basic ${AUTH_TOKEN}`;
 
     // Sélecteurs Listes
     const doneUl = document.querySelector(".doneList ul");
@@ -26,11 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 headers: { 'Authorization': authHeader }
             });
 
-            // VERIFICATION : Si la réponse est vide ou en erreur, on arrête proprement
-            if (!bookRes.ok || bookRes.status === 204) {
-                console.warn(`Livre non trouvé pour le titre: ${borrow.BookTitle}`);
-                return;
-            }
+            if (!bookRes.ok || bookRes.status === 204) return;
 
             const book = await bookRes.json();
             const { date, time } = formatDateTime(borrow.dateEmprunt);
@@ -45,48 +48,46 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </a>`;
 
-            // Distribution dans la bonne liste selon le statut
             if (borrow.status === "TERMINE") {
                 doneUl.appendChild(li);
             } else {
                 runningUl.appendChild(li);
             }
-        } catch (e) {
-            console.error("Erreur sur l'emprunt ID " + borrow.id, e);
-        }
+        } catch (e) { console.error(e); }
     }
 
-    /** 3. Charger tous les emprunts de l'abonné */
+    /** 3. Charger tous les emprunts de l'abonné connecté */
     async function loadUserBorrows() {
         try {
-            const response = await fetch(`http://localhost:8080/api/borrowBook/get/all/byAbonneID/${ABONNE_ID}`, {
+            // Récupération de l'ID via le mail
+            const userRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+                headers: { 'Authorization': authHeader }
+            });
+            const user = await userRes.json();
+
+            const response = await fetch(`http://localhost:8080/api/borrowBook/get/all/byAbonneID/${user.id}`, {
                 headers: { 'Authorization': authHeader }
             });
 
             if (response.ok) {
                 const borrows = await response.json();
-                // Nettoyage initial
                 doneUl.innerHTML = '';
                 runningUl.innerHTML = '';
 
-                // On traite chaque emprunt
                 for (const borrow of borrows) {
                     await createAndAppendBorrowItem(borrow);
                 }
 
-                // Mise à jour du compteur menu
+                // Mise à jour du compteur menu (Pragmatique : reflet de la réalité)
                 const counter = document.querySelector('.borrows b');
                 if(counter) counter.textContent = `+${borrows.length} Emprunts`;
             }
-        } catch (e) {
-            console.error("Erreur tracking global:", e);
-        }
+        } catch (e) { console.error(e); }
     }
 
-    // Lancement du chargement
     loadUserBorrows();
 
-    // --- Gestion des Boutons (Ton code existant) ---
+    // --- Gestion des Boutons (Ta logique intacte) ---
     let doneBtn = document.querySelector(".btnList .done");
     let notDoneBtn = document.querySelector(".btnList .notDone");
     let doneList = document.querySelector(".screen .doneList");
