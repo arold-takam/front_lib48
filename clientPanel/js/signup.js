@@ -3,58 +3,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.querySelector('#name');
     const mailInput = document.querySelector('#mail');
     const passInput = document.querySelector('#pass');
-    const seeBtn = document.querySelector('.see');
-    const rememberMe = document.querySelector('#mind');
 
-    /** 1. Gestion visuelle du mot de passe */
-    seeBtn.addEventListener('click', () => {
-        const isPass = passInput.type === 'password';
-        passInput.type = isPass ? 'text' : 'password';
-        seeBtn.querySelector('img').src = isPass
-            ? "../ressources/images/eyeClosed.png"
-            : "../ressources/images/eyeOpen.png";
-    });
-
-    /** 2. Envoi des données au contrôleur */
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Préparation du DTO correspondant à UserRequestDTO
-        const userRequestDTO = {
+        // Correspondance exacte avec ton UserRequestDTO (name, mail, password)
+        const userData = {
             name: nameInput.value.trim(),
             mail: mailInput.value.trim(),
             password: passInput.value
         };
 
+        // Rôle par défaut pour une inscription client
+        const role = "ABONNE";
+
         try {
-            // Appel à l'endpoint /user/register avec roleName en paramètre
-            const response = await fetch(`http://localhost:8080/user/register?roleName=ABONNE`, {
+            const response = await fetch(`http://localhost:8080/api/user/register?roleName=${role}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(userRequestDTO)
+                body: JSON.stringify(userData)
             });
 
             if (response.status === 201) {
-                // Succès : On stocke les credentials si "Se souvenir de moi" est coché
-                const credentials = btoa(`${userRequestDTO.mail}:${userRequestDTO.password}`);
-                const storage = rememberMe.checked ? localStorage : sessionStorage;
-
-                storage.setItem('userToken', credentials);
-                storage.setItem('userMail', userRequestDTO.mail);
-
-                alert("Compte créé avec succès !");
-                window.location.href = "./home.html";
-            } else if (response.status === 400) {
-                alert("Erreur : Les données saisies sont invalides ou l'email existe déjà.");
+                alert("Inscription réussie !");
+                window.location.href = "./login.html";
             } else {
-                alert("Une erreur est survenue lors de l'inscription.");
+                const errorText = await response.text();
+                alert("Échec : " + (errorText || "Vérifiez vos informations."));
             }
-
         } catch (error) {
-            console.error("Erreur technique:", error);
-            alert("Impossible de contacter le serveur.");
+            console.error("Erreur technique :", error);
+            alert("Impossible de joindre le serveur.");
         }
+    });
+
+    // Optionnel : Petit bonus pour l'œil (réaliste)
+    const eyeIcon = document.querySelector('.see');
+    eyeIcon.addEventListener('click', () => {
+        passInput.type = passInput.type === 'password' ? 'text' : 'password';
     });
 });
