@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const params = new URLSearchParams(window.location.search);
     const userId = params.get("id");
-    if (!userId) return;
+    if (!userId) alert("No user found.");
 
     try {
         const userRes = await fetch(`http://localhost:8080/api/user/get/${userId}`, {

@@ -27,22 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         for (const b of borrows) {
             const titreLivre = b.BookTitle;
             let bookId = "#"; // Valeur par défaut si non trouvé
-            let statusDispo = "INCONNU";
-
-            try {
-                // 1. Appel au controller via le titre du livre
-                const response = await fetch(`http://localhost:8080/api/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
-                    headers: { 'Authorization': `Basic ${auth}` }
-                });
-
-                if (response.ok) {
-                    const bookData = await response.json();
-                    bookId = bookData.id; // On récupère l'ID
-                    statusDispo = bookData.estDisponible ? "TERMINE" : "EN COURS";
-                }
-            } catch (err) {
-                console.error("Erreur lors de la récupération de l'ID du livre:", err);
-            }
+            let statusDispo = b.status;
 
             // 2. Création de la ligne avec l'ID récupéré
             const ul = document.createElement('ul');
