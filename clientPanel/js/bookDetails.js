@@ -1,4 +1,4 @@
-import {API_BASE_URL} from "../config";
+import {API_BASE_URL} from "../config.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token

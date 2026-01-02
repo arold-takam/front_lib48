@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique de la session
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
