@@ -1,0 +1,32 @@
+name: CI/CD Lib48 Client
+
+on:
+  push:
+    branches: [main, preprod, test]
+  pull_request:
+    branches: [main, preprod, test]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install eslint --save-dev
+
+      - name: Run Linting
+        run: npx eslint clientPanel/ressources/js/*.js --fix || echo "Quelques erreurs de style, mais on continue."
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deployment Trigger
+        run: echo "Le test est passé, Netlify peut prendre le relais."

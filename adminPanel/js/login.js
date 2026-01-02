@@ -1,56 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.signIn');
-    const eyeIcon = document.querySelector('.eye');
     const passInput = document.getElementById('pass');
 
-    // 1. Gestion visuelle du mot de passe (Mémoire visuelle)
-    eyeIcon.addEventListener('click', () => {
-        const isPass = passInput.type === 'password';
-        passInput.type = isPass ? 'text' : 'password';
-        eyeIcon.src = isPass ? "../ressources/images/eyeClosed.png" : "../ressources/images/eyeOpen.png";
-    });
-
-    // 2. Traitement du formulaire
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const mail = document.getElementById('mail').value;
         const password = passInput.value;
-
-        // Préparation du DTO pour ton @PostMapping "/login"
-        const loginData = {
-            mail: mail,
-            password: password
-        };
-
-        // Chaîne Basic Auth pour les futurs appels
+        const loginData = { mail, password };
         const authString = btoa(`${mail}:${password}`);
 
         try {
-            const response = await fetch('http://localhost:8080/api/user/login', {
+            // 1. Tentative de connexion
+            const loginResponse = await fetch('http://localhost:8080/api/user/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginData)
             });
 
-            if (response.ok) {
-                // Succès : On stocke l'auth dans le localStorage
-                localStorage.setItem('auth', authString);
-                localStorage.setItem('userMail', mail);
+            if (loginResponse.ok) {
+                // 2. Récupération des détails de l'utilisateur pour vérifier son rôle
+                const userResponse = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${mail}`, {
+                    headers: { 'Authorization': `Basic ${authString}` }
+                });
 
-                // On pourrait récupérer l'ID et le Role ici si ton login renvoyait un objet,
-                // mais comme il renvoie un String, on redirige simplement.
-                alert("Connexion réussie !");
-                window.location.href = "../html/aDashHome.html";
+                if (userResponse.ok) {
+                    const userData = await userResponse.json();
+
+                    // 3. Vérification stricte du rôle GERANT
+                    if (userData.roleName === 'GERANT') {
+                        localStorage.setItem('auth', authString);
+                        localStorage.setItem('userMail', mail);
+                        localStorage.setItem('userRole', userData.roleName);
+
+                        alert("Bienvenue, Administrateur.");
+                        window.location.href = "../html/aDashHome.html";
+                    } else {
+                        // C'est un ABONNE qui tente d'entrer sur l'admin
+                        alert("Accès refusé : Cet espace est réservé aux administrateurs.");
+                        window.location.href = "../../index.html";
+                    }
+                }
             } else {
-                const errorMsg = await response.text();
-                alert("Échec : " + errorMsg);
+                alert("Identifiants incorrects.");
             }
         } catch (err) {
-            console.error("Erreur connexion:", err);
-            alert("Le serveur ne répond pas.");
+            console.error(err);
+            alert("Erreur de connexion au serveur.");
         }
     });
 });
-
-//TODO: implement security and logout from gemini.

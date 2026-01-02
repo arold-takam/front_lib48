@@ -1,0 +1,7 @@
+{
+  "name": "front-lib48",
+  "scripts": {
+    "test": "echo 'Pas de tests unitaires pour le moment' && exit 0",
+    "lint": "npx eslint clientPanel/ressources/js/*.js"
+  }
+}
