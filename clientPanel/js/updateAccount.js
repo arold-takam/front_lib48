@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const isPass = passInput.type === 'password';
         passInput.type = isPass ? 'text' : 'password';
         seeBtn.querySelector('img').src = isPass
-            ? "../ressources/images/eyeClose.png"
+            ? "../ressources/images/eyeClosed.png"
             : "../ressources/images/eyeOpen.png";
     });
 
