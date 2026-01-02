@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 const params = new URLSearchParams(window.location.search);
 const bookID = params.get("id");
 const auth = localStorage.getItem('auth');
@@ -25,7 +27,7 @@ async function fetchProtectedImage(url) {
 
 async function loadBookDetails() {
     try {
-        const response = await fetch(`${CONFIG.API_URL}/books/get/byID/${bookID}`, {
+        const response = await fetch(`${API_BASE_URL}/books/get/byID/${bookID}`, {
             method: 'GET',
             headers: { 'Authorization': `Basic ${auth}` }
         });
@@ -55,9 +57,7 @@ async function displayBookDetails(book) {
     // Image avec gestion du 401
     const card = document.querySelector('.bookCard .card');
     if (card) {
-        const imageUrl = book.urlCoverImage
-            ? await fetchProtectedImage(book.urlCoverImage)
-            : "../ressources/images/fondMenu.jpg";
+        const imageUrl = book.urlCoverImage || "../ressources/images/fondMenu.jpg";
 
         card.style.backgroundImage = `url(${imageUrl})`;
         card.style.backgroundPosition = "center";
@@ -90,6 +90,8 @@ async function displayBookDetails(book) {
     if (updBtn) {
         updBtn.href = `../html/aUpdateBook.html?id=${book.id}`;
     }
+
+    window.displayBookDetails = displayBookDetails;
 }
 
 document.addEventListener('DOMContentLoaded', loadBookDetails);
