@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const auth = localStorage.getItem('auth');
     if (!auth) {
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/categories/create', {
+            const response = await fetch(`${API_BASE_URL}/categories/create`, {
                 method: 'POST',
                 headers: {
                     'Authorization': auth.startsWith('Basic ') ? auth : `Basic ${auth}`,

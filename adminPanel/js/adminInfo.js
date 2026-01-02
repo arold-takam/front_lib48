@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     const userMail = localStorage.getItem('userMail'); // On utilise le mail stocké au login
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // RÉALISME : On récupère le profil via le mail (ou nom) car l'ID est inconnu au départ
-        const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${userMail}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 

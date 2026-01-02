@@ -1,4 +1,6 @@
 // 1. Fonction de chargement de l'historique
+import {API_BASE_URL} from "../config.js";
+
 async function loadBookHistory(bookTitle) {
     const panelDown = document.querySelector('.panelDown');
     const auth = localStorage.getItem('auth'); // Récupération dynamique
@@ -6,7 +8,7 @@ async function loadBookHistory(bookTitle) {
     if (!panelDown || !auth) return;
 
     try {
-        const response = await fetch(`http://localhost:8080/api/history/get/byBookTitle?bookTitle=${encodeURIComponent(bookTitle)}`, {
+        const response = await fetch(`${API_BASE_URL}/history/get/byBookTitle?bookTitle=${encodeURIComponent(bookTitle)}`, {
             headers: {
                 'Authorization': `Basic ${auth}`
             }
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Note : Utilisation de l'URL propre avec auth dynamique
-        const response = await fetch(`http://localhost:8080/api/books/get/byID/${bookID}`, {
+        const response = await fetch(`${API_BASE_URL}/books/get/byID/${bookID}`, {
             method: 'GET',
             headers: { 'Authorization': `Basic ${auth}` }
         });

@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get('id');
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:8080/api/categories/delete/${categoryId}`, {
+            const response = await fetch(`${API_BASE_URL}/categories/delete/${categoryId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': authHeader

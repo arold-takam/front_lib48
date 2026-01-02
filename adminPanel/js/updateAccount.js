@@ -1,7 +1,9 @@
 // 1. Fonction de pré-remplissage
+import {API_BASE_URL} from "../config.js";
+
 async function fillForm(auth, adminId) {
     try {
-        const response = await fetch(`http://localhost:8080/api/user/get/${adminId}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/${adminId}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             // Ton endpoint : PUT /user/update/{userID}?roleName=GERANT
-            const response = await fetch(`http://localhost:8080/api/user/update/${adminId}?roleName=GERANT`, {
+            const response = await fetch(`${API_BASE_URL}/user/update/${adminId}?roleName=GERANT`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Basic ${auth}`,

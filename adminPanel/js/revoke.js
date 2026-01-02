@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     const userMail = localStorage.getItem('userMail');
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             // 2. Récupérer l'ID du gérant connecté via son mail
-            const adminRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+            const adminRes = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${userMail}`, {
                 headers: { 'Authorization': `Basic ${auth}` }
             });
             const adminData = await adminRes.json();
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 3. Appel au endpoint de révocation
             // Format: PUT /revoque/card/{abonneID}?gerantID={gerantID}
-            const response = await fetch(`http://localhost:8080/api/user/revoque/card/${abonneID}?gerantID=${gerantID}`, {
+            const response = await fetch(`${API_BASE_URL}/user/revoque/card/${abonneID}?gerantID=${gerantID}`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Basic ${auth}` }
             });
