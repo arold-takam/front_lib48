@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     seeBtn.addEventListener('click', () => {
         if (passP.textContent === "********") {
             passP.textContent = realPassword;
-            seeBtn.querySelector('img').src = "../ressources/images/eyeClosed.png";
+            seeBtn.querySelector('img').src = "../ressources/images/eyeClosedd.png";
         } else {
             passP.textContent = "********";
             seeBtn.querySelector('img').src = "../ressources/images/eyeOpen.png";
