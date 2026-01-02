@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 async function loadCategories() {
     const panelDown = document.querySelector('.panelDown .bookLine');
     if (!panelDown) return;
@@ -16,13 +18,13 @@ async function loadCategories() {
         };
 
         // 2. Récupérer toutes les catégories
-        const catRes = await fetch('http://localhost:8080/api/categories/get/All', { headers });
+        const catRes = await fetch(`${API_BASE_URL}/categories/get/All`, { headers });
 
         if (catRes.status === 401) { window.location.replace("login.html"); return; }
         const categories = await catRes.json();
 
         // 3. Récupérer tous les livres
-        const bookRes = await fetch('http://localhost:8080/api/books/get/All', { headers });
+        const bookRes = await fetch(`${API_BASE_URL}/books/get/All`, { headers });
         const allBooks = await bookRes.json();
 
         panelDown.innerHTML = '';

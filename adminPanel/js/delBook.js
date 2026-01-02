@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     const urlParams = new URLSearchParams(window.location.search);
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Optionnel : Récupérer le titre pour la mémoire visuelle
     try {
-        const response = await fetch(`http://localhost:8080/api/books/get/byID/${bookId}`, {
+        const response = await fetch(`${API_BASE_URL}/books/get/byID/${bookId}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         if (response.ok) {
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:8080/api/books/delete/${bookId}`, {
+            const response = await fetch(`${API_BASE_URL}/books/delete/${bookId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Basic ${auth}` }
             });

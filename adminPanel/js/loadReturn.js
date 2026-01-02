@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const panelDown = document.querySelector('.panelDown');
     const auth = localStorage.getItem('auth');
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Récupération de tous les retours via le controller
-        const response = await fetch(`http://localhost:8080/api/returnBook/get/all/${gerantID}`, {
+        const response = await fetch(`${API_BASE_URL}/returnBook/get/all/${gerantID}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const returns = await response.json();
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             try {
                 // Récupération de l'ID via le titre pour le lien détails
-                const bookRes = await fetch(`http://localhost:8080/api/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
+                const bookRes = await fetch(`${API_BASE_URL}/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
                     headers: { 'Authorization': `Basic ${auth}` }
                 });
                 if (bookRes.ok) {

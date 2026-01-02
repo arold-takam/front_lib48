@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération de l'ID depuis l'URL (ex: updateCategory.html?id=2)
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Pré-remplissage du formulaire
     try {
-        const getRes = await fetch(`http://localhost:8080/api/categories/get/byID/${categoryId}`, {
+        const getRes = await fetch(`${API_BASE_URL}/categories/get/byID/${categoryId}`, {
             headers: { 'Authorization': authHeader }
         });
         if (getRes.ok) {
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            const response = await fetch(`http://localhost:8080/api/categories/update/${categoryId}`, {
+            const response = await fetch(`${API_BASE_URL}/categories/update/${categoryId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': authHeader,

@@ -1,6 +1,8 @@
+import {API_BASE_URL} from "../config.js";
+
 async function loadSideProfil(auth, userMail) {
     try {
-        const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${userMail}`, {
             headers: {'Authorization': `Basic ${auth}`}
         });
         if (!response.ok) return;
@@ -29,13 +31,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Récupérer TOUT l'historique via history/get/All
-        const historyRes = await fetch('http://localhost:8080/api/history/get/All', {
+        const historyRes = await fetch(`${API_BASE_URL}/history/get/All`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const histories = await historyRes.json();
 
         // 2. Récupérer TOUS les users pour mapper le nom -> ID (indispensable pour ton lien)
-        const userRes = await fetch('http://localhost:8080/api/user/get', {
+        const userRes = await fetch(`${API_BASE_URL}/user/get`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const allUsers = await userRes.json();

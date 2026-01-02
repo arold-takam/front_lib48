@@ -1,13 +1,15 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const catId = params.get("id");
-    const auth = btoa('toto@gmail.com:toto237');
+    const auth = localStorage.getItem("auth");
 
     if (!catId) return;
 
     try {
         // 1. Récupérer les infos de la catégorie pour le titre (Cible 1)
-        const catResponse = await fetch(`http://localhost:8080/api/categories/get/All`, {
+        const catResponse = await fetch(`${API_BASE_URL}/categories/get/All`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const categories = await catResponse.json();
@@ -33,7 +35,7 @@ async function loadBooksByCategory(categoryName, auth) {
     const panelDown = document.querySelector('.panelDown');
 
     try {
-        const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
+        const response = await fetch(`${API_BASE_URL}/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 

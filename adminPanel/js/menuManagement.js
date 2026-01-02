@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Sécurité Pragmatique
     const auth = localStorage.getItem('auth');
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 3. Chargement dynamique du Profil Admin (Aside)
     try {
-        const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${userMail}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 

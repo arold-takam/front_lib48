@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     if (!auth) return window.location.replace("login.html");
@@ -8,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- PHASE 1 : Remplir le select des catégories ---
     try {
-        const res = await fetch('http://localhost:8080/api/categories/get/All', {
+        const res = await fetch(`${API_BASE_URL}/categories/get/All`, {
             headers: { 'Authorization': authHeader }
         });
         const categories = await res.json();
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         formData.append('editeur', document.querySelector('#editor').value);
 
         try {
-            const response = await fetch('http://localhost:8080/api/books/create', {
+            const response = await fetch(`${API_BASE_URL}/books/create`, {
                 method: 'POST',
                 headers: {
                     'Authorization': authHeader

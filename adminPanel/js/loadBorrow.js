@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const borrowContainer = document.querySelector('.borrowLine');
     const auth = localStorage.getItem('auth');
@@ -8,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/api/borrowBook/get/all`, {
+        const response = await fetch(`${API_BASE_URL}/borrowBook/get/all`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // --- LOGIQUE DE RÉCUPÉRATION DE L'ID ---
             try {
                 // On cherche le livre par son titre pour obtenir son ID
-                const bookRes = await fetch(`http://localhost:8080/api/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
+                const bookRes = await fetch(`${API_BASE_URL}/books/get/byTitle?title=${encodeURIComponent(titreLivre)}`, {
                     headers: { 'Authorization': `Basic ${auth}` }
                 });
                 if (bookRes.ok) {
