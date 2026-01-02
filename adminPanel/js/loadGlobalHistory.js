@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const panelDown = document.querySelector('.panelDown');
     const auth = localStorage.getItem('auth');
@@ -10,13 +12,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. On récupère les users pour mapper le Nom -> ID (nécessaire pour le lien dynamique)
-        const userRes = await fetch('http://localhost:8080/api/user/get', {
+        const userRes = await fetch(`${API_BASE_URL}/user/get`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const allUsers = await userRes.json();
 
         // 2. On récupère l'historique complet via ton endpoint /get/All
-        const historyRes = await fetch('http://localhost:8080/api/history/get/All', {
+        const historyRes = await fetch(`${API_BASE_URL}/history/get/All`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const histories = await historyRes.json();

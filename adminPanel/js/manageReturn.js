@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     const gerantId = localStorage.getItem('userId');
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. Charger les emprunts EN_COURS (Pragmatique : liste propre)
     async function loadActiveBorrows() {
         try {
-            const response = await fetch('http://localhost:8080/api/borrowBook/get/all/byStatus?status=EN_COURS', {
+            const response = await fetch(`${API_BASE_URL}/borrowBook/get/all/byStatus?status=EN_COURS`, {
                 headers: { 'Authorization': `Basic ${auth}` }
             });
 
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             // URL attendue: /create/{idGerant}?etatLivre=...
-            const response = await fetch(`http://localhost:8080/api/returnBook/create/${gerantId}?etatLivre=${selectedEtat}`, {
+            const response = await fetch(`${API_BASE_URL}/returnBook/create/${gerantId}?etatLivre=${selectedEtat}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Basic ${auth}`,

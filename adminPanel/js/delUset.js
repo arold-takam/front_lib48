@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const auth = localStorage.getItem('auth');
     const connectedMail = localStorage.getItem('userMail'); // Stocké au login
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 3. Récupérer les infos de l'utilisateur cible pour comparer le mail
-        const response = await fetch(`http://localhost:8080/api/user/get/${targetUserId}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/${targetUserId}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const targetUser = await response.json();
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const deleteResponse = await fetch(`http://localhost:8080/api/user/delete/${targetUserId}`, {
+            const deleteResponse = await fetch(`${API_BASE_URL}/user/delete/${targetUserId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Basic ${auth}` }
             });

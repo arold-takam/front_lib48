@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const bookId = urlParams.get('id');
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. Charger les catégories et les données actuelles du livre
     try {
         // Charger catégories
-        const catRes = await fetch('http://localhost:8080/api/categories/get/All', {
+        const catRes = await fetch(`${API_BASE_URL}/categories/get/All`, {
             headers: { 'Authorization': authHeader }
         });
         const categories = await catRes.json();
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         // Charger données du livre
-        const bookRes = await fetch(`http://localhost:8080/api/books/get/byID/${bookId}`, {
+        const bookRes = await fetch(`${API_BASE_URL}/books/get/byID/${bookId}`, {
             headers: { 'Authorization': authHeader }
         });
         const book = await bookRes.json();
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         formData.append('estDisponible', document.querySelector('#yes').checked);
 
         try {
-            const response = await fetch(`http://localhost:8080/api/books/update/${bookId}`, {
+            const response = await fetch(`${API_BASE_URL}/books/update/${bookId}`, {
                 method: 'PUT',
                 headers: { 'Authorization': authHeader },
                 body: formData

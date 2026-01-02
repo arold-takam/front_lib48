@@ -1,10 +1,12 @@
 // 1. Définition des fonctions d'abord (Pragmatisme)
+import {API_BASE_URL} from "../config.js";
+
 async function loadUserHistory(userName, auth) {
     const panelDown = document.querySelector('.panelDown');
     if (!panelDown) return;
 
     try {
-        const response = await fetch(`http://localhost:8080/api/history/get/byUsername?userName=${encodeURIComponent(userName)}`, {
+        const response = await fetch(`${API_BASE_URL}/history/get/byUsername?userName=${encodeURIComponent(userName)}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
         const activities = await response.json();
@@ -30,7 +32,7 @@ async function loadUserHistory(userName, auth) {
 
 async function loadSideProfil(auth, userMail) {
     try {
-        const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${userMail}`, {
+        const response = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${userMail}`, {
             headers: {'Authorization': `Basic ${auth}`}
         });
         if (!response.ok) return;
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Exemple de ce que ton script de liste doit générer :
     try {
-        const userRes = await fetch(`http://localhost:8080/api/user/get/${userId}`, {
+        const userRes = await fetch(`${API_BASE_URL}/user/get/${userId}`, {
             headers: { 'Authorization': `Basic ${auth}` }
         });
 
