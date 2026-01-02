@@ -1,141 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Lib 48/Abonnez vous</title>
-	<link rel="stylesheet" href="../css/generalStyle.css">
-	<link rel="stylesheet" href="../css/subScribe.css">
-</head>
-<body>
-	<section class="menu">
-		<div class="top">
-			<div class="menuHead">
-				<a href="home.html" class="logo"><img src="../ressources/images/logo.png" alt="logo"></a>
-				<button class="close"><img src="../ressources/images/menuClose.png" alt="menuClosed"></button>
-			</div>
-			<a href="./profile.html" class="profile">
-				<div class="initial"><p>NE</p></div>
-				<div class="info">
-					<p>Noe Ernest</p>
-					<b>noeErnest2025@gmail.com</b>
-				</div>
-			</a>
-		</div>
-		<nav>
-			<a href="home.html" class="home">
-				<img src="../ressources/images/home.png" alt="home">
-				<p>Accueil</p>
-				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
-			</a>
-			<a href="#" class="notify">
-				<img src="../ressources/images/notifications.png" alt="notifications">
-				<p>Notifications</p>
-				<b>+25 NEWS</b>
-				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
-			</a>
-			<a href="./borrowTrack.html" class="borrows">
-				<img src="../ressources/images/loan.png" alt="loan">
-				<p>Vos emprunts</p>
-				<b>+5 Emprunts</b>
-				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
-			</a>
-			<a href="#" class="settings">
-				<img src="../ressources/images/settings.png" alt="settings">
-				<p>Paramètres</p>
-				<figure><img src="../ressources/images/arrow_right.png" alt="arrow"></figure>
-			</a>
-		</nav>
-		<div class="theme">
-			<p>theme <b>(Mode claire):</b></p>
-			<div class="switch">
-				<img src="../ressources/images/light.png" alt="light mode" class="light ">
-				<img src="../ressources/images/dark.png" alt="dark mode" class="dark active">
-			</div>
-		</div>
-		<footer>
-			<p>&copy; Copyright 2025, Lib 48; All right reserved.</p>
-		</footer>
-	</section>
-	<header>
-		<a class="left" href="home.html">
-			<img src="../ressources/images/logo.png" alt="logo image" class="logo">
-		</a>
-		<div class="right">
-			<form class="search">
-				<input id="findAll" name="findAll" type="search" placeholder="Rechercher...">
-				<button type="submit" class="find"><img src="../ressources/images/search.png" alt="Find something"></button>
-			</form>
-			<button type="button" class="openMenu"><img src="../ressources/images/menuOpen.png" alt="Menu open button"></button>
-		</div>
-	</header>
-	<main>
-		<section class="top">
-			<div class="hero">
-				<p>Obtenir</p>
-				<h1>Ma carte</h1>
-			</div>
-		</section>
-		<section class="info">
-			<h2>Choisir votre carte</h2>
-			<p>Chez Lib48 vous avez une panoplie de carte d'abonnement a votre disposition, il suffit d'en choisir une et jouir des ses pass dans nos agences.</p>
-			<b>*Vous pouvez changer de carte ou vous reabonner a tout moment et suivant le respect de notre politique.</b>
-		</section>
-		<form class="chooseCard">
-			<div class="put">
-				<div class="standardCard">
-					<input type="radio" name="typeCard" id="standard">
-					<label for="standard">
-						<div class="topCard">
-							<p>Carte</p>
-							<b>Standard</b>
-						</div>
-						<span class="middle">
-						<span class="msg">
-							<h3>15 jours</h3>
-							<p>De validité</p>
-						</span>
-					</span>
-						<span class="bottom">CHOISIR</span>
-					</label>
-				</div>
-				<div class="customCard">
-					<input type="radio" name="typeCard" id="custum">
-					<label for="custum">
-						<div class="topCard">
-							<p>Carte</p>
-							<b>Custum</b>
-						</div>
-						<span class="middle">
-						<span class="msg">
-							<h3>30 jours</h3>
-							<p>De validité</p>
-						</span>
-					</span>
-						<span class="bottom">CHOISIR</span>
-					</label>
-				</div>
-				<div class="vipCard">
-					<input type="radio" name="typeCard" id="vip">
-					<label for="vip">
-						<div class="topCard">
-							<p>Carte</p>
-							<b>VIP</b>
-						</div>
-						<span class="middle">
-						<span class="msg">
-							<h3>60 jours</h3>
-							<p>De validité</p>
-						</span>
-					</span>
-						<span class="bottom">CHOISIR</span>
-					</label>
-				</div>
-			</div>
-			<button type="submit" class="ok">OBTENIR</button>
-			<a href="./loadingPage.html">SUCCESS</a>
-		</form>
-	</main>
-	
-	<script src="../js/playMenu.js" defer></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lib 48/Abonnez vous</title>
+    <link rel="stylesheet" href="../css/generalStyle.css" />
+    <link rel="stylesheet" href="../css/subScribe.css" />
+  </head>
+  <body>
+    <section class="menu">
+      <div class="top">
+        <div class="menuHead">
+          <a href="home.html" class="logo"
+            ><img src="../ressources/images/logo.png" alt="logo"
+          /></a>
+          <button class="close">
+            <img src="../ressources/images/menuClose.png" alt="menuClosed" />
+          </button>
+        </div>
+        <a href="./profile.html" class="profile">
+          <div class="initial"><p>NE</p></div>
+          <div class="info">
+            <p>Noe Ernest</p>
+            <b>noeErnest2025@gmail.com</b>
+          </div>
+        </a>
+      </div>
+      <nav>
+        <a href="home.html" class="home">
+          <img src="../ressources/images/home.png" alt="home" />
+          <p>Accueil</p>
+          <figure>
+            <img src="../ressources/images/arrow_right.png" alt="arrow" />
+          </figure>
+        </a>
+        <a href="#" class="notify">
+          <img
+            src="../ressources/images/notifications.png"
+            alt="notifications"
+          />
+          <p>Notifications</p>
+          <b>+25 NEWS</b>
+          <figure>
+            <img src="../ressources/images/arrow_right.png" alt="arrow" />
+          </figure>
+        </a>
+        <a href="./borrowTrack.html" class="borrows">
+          <img src="../ressources/images/loan.png" alt="loan" />
+          <p>Vos emprunts</p>
+          <b>+5 Emprunts</b>
+          <figure>
+            <img src="../ressources/images/arrow_right.png" alt="arrow" />
+          </figure>
+        </a>
+        <a href="#" class="settings">
+          <img src="../ressources/images/settings.png" alt="settings" />
+          <p>Paramètres</p>
+          <figure>
+            <img src="../ressources/images/arrow_right.png" alt="arrow" />
+          </figure>
+        </a>
+      </nav>
+      <div class="theme">
+        <p>theme <b>(Mode claire):</b></p>
+        <div class="switch">
+          <img
+            src="../ressources/images/light.png"
+            alt="light mode"
+            class="light"
+          />
+          <img
+            src="../ressources/images/dark.png"
+            alt="dark mode"
+            class="dark active"
+          />
+        </div>
+      </div>
+      <footer>
+        <p>&copy; Copyright 2025, Lib 48; All right reserved.</p>
+      </footer>
+    </section>
+    <header>
+      <a class="left" href="home.html">
+        <img
+          src="../ressources/images/logo.png"
+          alt="logo image"
+          class="logo"
+        />
+      </a>
+      <div class="right">
+        <form class="search">
+          <input
+            id="findAll"
+            name="findAll"
+            type="search"
+            placeholder="Rechercher..."
+          />
+          <button type="submit" class="find">
+            <img src="../ressources/images/search.png" alt="Find something" />
+          </button>
+        </form>
+        <button type="button" class="openMenu">
+          <img src="../ressources/images/menuOpen.png" alt="Menu open button" />
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="top">
+        <div class="hero">
+          <p>Obtenir</p>
+          <h1>Ma carte</h1>
+        </div>
+      </section>
+      <section class="info">
+        <h2>Choisir votre carte</h2>
+        <p>
+          Chez Lib48 vous avez une panoplie de carte d'abonnement a votre
+          disposition, il suffit d'en choisir une et jouir des ses pass dans nos
+          agences.
+        </p>
+        <b
+          >*Vous pouvez changer de carte ou vous reabonner a tout moment et
+          suivant le respect de notre politique.</b
+        >
+      </section>
+      <form class="chooseCard">
+        <div class="put">
+          <div class="standardCard">
+            <input type="radio" name="typeCard" id="standard" />
+            <label for="standard">
+              <div class="topCard">
+                <p>Carte</p>
+                <b>Standard</b>
+              </div>
+              <span class="middle">
+                <span class="msg">
+                  <h3>15 jours</h3>
+                  <p>De validité</p>
+                </span>
+              </span>
+              <span class="bottom">CHOISIR</span>
+            </label>
+          </div>
+          <div class="customCard">
+            <input type="radio" name="typeCard" id="custum" />
+            <label for="custum">
+              <div class="topCard">
+                <p>Carte</p>
+                <b>Custum</b>
+              </div>
+              <span class="middle">
+                <span class="msg">
+                  <h3>30 jours</h3>
+                  <p>De validité</p>
+                </span>
+              </span>
+              <span class="bottom">CHOISIR</span>
+            </label>
+          </div>
+          <div class="vipCard">
+            <input type="radio" name="typeCard" id="vip" />
+            <label for="vip">
+              <div class="topCard">
+                <p>Carte</p>
+                <b>VIP</b>
+              </div>
+              <span class="middle">
+                <span class="msg">
+                  <h3>60 jours</h3>
+                  <p>De validité</p>
+                </span>
+              </span>
+              <span class="bottom">CHOISIR</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="ok">OBTENIR</button>
+      </form>
+    </main>
+
+    <script type="module" src="../js/playMenu.js" defer></script>
+    <script type="module" src="../js/subscribe.js" defer></script>
+  </body>
 </html>

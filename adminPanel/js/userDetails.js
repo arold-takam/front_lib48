@@ -59,8 +59,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const params = new URLSearchParams(window.location.search);
     const userId = params.get("id");
-    if (!userId) return;
+    if (!userId){
+        window.location.replace("./aDashHome.html");
 
+        return;
+    }
+
+
+    const deleteLink = document.querySelector('.del');
+    deleteLink.href = `aDelUser.html?id=${userId}`;
+
+    const revokeLink = document.querySelector('.revoke');
+    revokeLink.href = `aRevoke.html?id=${userId}`;
+
+    // Exemple de ce que ton script de liste doit générer :
     try {
         const userRes = await fetch(`http://localhost:8080/api/user/get/${userId}`, {
             headers: { 'Authorization': `Basic ${auth}` }

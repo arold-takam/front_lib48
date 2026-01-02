@@ -6,6 +6,8 @@ if (!auth) {
     window.location.replace("login.html");
 }
 
+console.log(bookID);
+
 // 1. Fonction pour récupérer une image protégée par Auth
 async function fetchProtectedImage(url) {
     try {
