@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.inscription');
     const nameInput = document.querySelector('#name');
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const role = "ABONNE";
 
         try {
-            const response = await fetch(`http://localhost:8080/api/user/register?roleName=${role}`, {
+            const response = await fetch(`${API_BASE_URL}/user/register?roleName=${role}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

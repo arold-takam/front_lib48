@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 1. Utitaire pour les images */
     async function getSecureImage(id) {
         try {
-            const res = await fetch(`http://localhost:8080/api/books/${id}/cover-image`, {
+            const res = await fetch(`${API_BASE_URL}/books/${id}/cover-image`, {
                 headers: { 'Authorization': authHeader }
             });
             if (res.ok) {
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 2. Charger les infos du livre et la section "Même catégorie" */
     async function loadPageData() {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/get/byID/${bookId}`, {
+            const response = await fetch(`${API_BASE_URL}/books/get/byID/${bookId}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -67,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 3. Dynamiser "Vous allez aimer" */
     async function loadRelated(categoryName) {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${categoryName}`, {
+            const response = await fetch(`${API_BASE_URL}/books/get/byCategory?categorie=${categoryName}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            const res = await fetch(`http://localhost:8080/api/borrowBook/create/${DEFAULT_GERANT_ID}`, {
+            const res = await fetch(`${API_BASE_URL}/borrowBook/create/${DEFAULT_GERANT_ID}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': authHeader,

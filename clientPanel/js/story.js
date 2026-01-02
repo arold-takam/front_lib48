@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique de la session
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -52,13 +54,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadHistory() {
         try {
             // Étape 1 : Récupérer le nom de l'utilisateur via son mail
-            const userRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const userRes = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
             const user = await userRes.json();
 
             // Étape 2 : Charger l'historique avec le bon USER_NAME
-            const response = await fetch(`http://localhost:8080/api/history/get/byUsername?userName=${encodeURIComponent(user.name)}`, {
+            const response = await fetch(`${API_BASE_URL}/history/get/byUsername?userName=${encodeURIComponent(user.name)}`, {
                 headers: { 'Authorization': authHeader }
             });
 

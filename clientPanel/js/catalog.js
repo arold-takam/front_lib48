@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token (Pragmatique : redirection si absent)
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function getSecureImage(bookId) {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/${bookId}/cover-image`, {
+            const response = await fetch(`${API_BASE_URL}/books/${bookId}/cover-image`, {
                 headers: { 'Authorization': authHeader }
             });
             if (response.ok) {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function loadBooks() {
         try {
-            const response = await fetch('http://localhost:8080/api/books/get/All', {
+            const response = await fetch(`${API_BASE_URL}/books/get/All`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function loadCategories() {
         try {
-            const response = await fetch('http://localhost:8080/api/categories/get/All', {
+            const response = await fetch(`${API_BASE_URL}/categories/get/All`, {
                 headers: { 'Authorization': authHeader }
             });
 

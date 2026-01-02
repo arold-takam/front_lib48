@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 1. Charger les détails de la catégorie */
     async function loadCategoryInfo() {
         try {
-            const response = await fetch(`http://localhost:8080/api/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
+            const response = await fetch(`${API_BASE_URL}/categories/get/byName?name=${encodeURIComponent(categoryName)}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 2. Récupération sécurisée des images */
     async function getSecureImage(id) {
         try {
-            const res = await fetch(`http://localhost:8080/api/books/${id}/cover-image`, {
+            const res = await fetch(`${API_BASE_URL}/books/${id}/cover-image`, {
                 headers: { 'Authorization': authHeader }
             });
             if (res.ok) return URL.createObjectURL(await res.blob());
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadCategoryBooks() {
         try {
             // Utilisation du authHeader dynamique ici aussi
-            const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
+            const response = await fetch(`${API_BASE_URL}/books/get/byCategory?categorie=${encodeURIComponent(categoryName)}`, {
                 headers: { 'Authorization': authHeader }
             });
 

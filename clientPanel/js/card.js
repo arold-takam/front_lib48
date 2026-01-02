@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token et du Mail
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 2. Récupérer l'ID de l'abonné via son mail */
     async function getAbonneID() {
         try {
-            const res = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const res = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
             if (res.ok) {
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!currentAbonneID) return;
 
         try {
-            const response = await fetch(`http://localhost:8080/api/user/get/card/${currentAbonneID}`, {
+            const response = await fetch(`${API_BASE_URL}/user/get/card/${currentAbonneID}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
         if (confirm("Voulez-vous vraiment supprimer votre carte ?")) {
             try {
-                const res = await fetch(`http://localhost:8080/api/user/delete/card/${currentAbonneID}`, {
+                const res = await fetch(`${API_BASE_URL}/user/delete/card/${currentAbonneID}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': authHeader }
                 });

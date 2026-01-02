@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function getSecureImage(id) {
         try {
-            const res = await fetch(`http://localhost:8080/api/books/${id}/cover-image`, {
+            const res = await fetch(`${API_BASE_URL}/books/${id}/cover-image`, {
                 headers: { 'Authorization': authHeader }
             });
             if (res.ok) {
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function loadBookDetails() {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/get/byID/${bookId}`, {
+            const response = await fetch(`${API_BASE_URL}/books/get/byID/${bookId}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      */
     async function loadRelatedBooks(categoryName) {
         try {
-            const response = await fetch(`http://localhost:8080/api/books/get/byCategory?categorie=${categoryName}`, {
+            const response = await fetch(`${API_BASE_URL}/books/get/byCategory?categorie=${categoryName}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 relatedList.innerHTML = '';
 
                 // On affiche les livres sauf celui qu'on consulte déjà
-                const filteredBooks = books.filter(b => b.id != bookId);
+                const filteredBooks = books.filter(b => b.id !== bookId);
 
                 for (const b of filteredBooks) {
                     const li = document.createElement('li');

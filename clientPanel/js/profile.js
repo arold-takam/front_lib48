@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique de la session
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadUserProfile() {
         try {
             // Pragmatique : on récupère l'utilisateur par son mail de session
-            const response = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const response = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
 

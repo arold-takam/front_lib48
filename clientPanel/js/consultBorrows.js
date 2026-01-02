@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Récupération dynamique du Token et du Mail
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 2. Créer et injecter l'élément HTML d'un emprunt */
     async function createAndAppendBorrowItem(borrow) {
         try {
-            const bookRes = await fetch(`http://localhost:8080/api/borrowBook/get/bookBorrowed/byTitle?bookTitle=${encodeURIComponent(borrow.BookTitle)}`, {
+            const bookRes = await fetch(`${API_BASE_URL}/borrowBook/get/bookBorrowed/byTitle?bookTitle=${encodeURIComponent(borrow.BookTitle)}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -60,12 +62,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadUserBorrows() {
         try {
             // Récupération de l'ID via le mail
-            const userRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const userRes = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
             const user = await userRes.json();
 
-            const response = await fetch(`http://localhost:8080/api/borrowBook/get/all/byAbonneID/${user.id}`, {
+            const response = await fetch(`${API_BASE_URL}/borrowBook/get/all/byAbonneID/${user.id}`, {
                 headers: { 'Authorization': authHeader }
             });
 

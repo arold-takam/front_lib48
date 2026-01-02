@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Sécurité Dynamique
     const AUTH_TOKEN = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     /** 2. Charger les infos Utilisateur et Initiales */
     async function loadUserMenu() {
         try {
-            const res = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const res = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadStats(userId) {
         try {
             // Emprunts : on compte la taille du tableau retourné
-            const resBorrow = await fetch(`http://localhost:8080/api/borrowBook/get/all/byAbonneID/${userId}`, {
+            const resBorrow = await fetch(`${API_BASE_URL}/borrowBook/get/all/byAbonneID/${userId}`, {
                 headers: { 'Authorization': authHeader }
             });
             if (resBorrow.ok) {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             // News : on compte tous les livres (ou les 10 derniers selon ton choix)
-            const resBooks = await fetch(`http://localhost:8080/api/books/get/All`, {
+            const resBooks = await fetch(`${API_BASE_URL}/books/get/All`, {
                 headers: { 'Authorization': authHeader }
             });
             if (resBooks.ok) {

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadCurrentInfo() {
         try {
             // On récupère d'abord l'utilisateur par son mail de session
-            const userRes = await fetch(`http://localhost:8080/api/user/get/byMail?mail=${USER_MAIL}`, {
+            const userRes = await fetch(`${API_BASE_URL}/user/get/byMail?mail=${USER_MAIL}`, {
                 headers: { 'Authorization': authHeader }
             });
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             // Utilisation de l'ID dynamique récupéré au chargement
-            const response = await fetch(`http://localhost:8080/api/user/update/${currentUserID}?roleName=ABONNE`, {
+            const response = await fetch(`${API_BASE_URL}/user/update/${currentUserID}?roleName=ABONNE`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': authHeader,
