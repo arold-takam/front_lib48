@@ -1,3 +1,5 @@
+import {API_BASE_URL} from "../config.js";
+
 async function fetchAndDisplayBooks() {
     const container = document.querySelector('.panel .panelDown');
     console.log(container)
@@ -11,7 +13,7 @@ async function fetchAndDisplayBooks() {
     }
 
     try {
-        const response = await fetch(`${CONFIG.API_URL}/books/get/All`, {
+        const response = await fetch(`${API_BASE_URL}/books/get/All`, {
             method: 'GET',
             headers: {
                 'Authorization': `Basic ${auth}`,
