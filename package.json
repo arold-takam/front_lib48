@@ -5,3 +5,5 @@
     "lint": "npx eslint clientPanel/ressources/js/*.js"
   }
 }
+
+//Nothing to do now.
